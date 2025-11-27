@@ -19,6 +19,12 @@ public class UserMapper implements BaseMapper<User>{
 
     @Override
     public String toString(User entity) {
-        return entity.getId() + ", " + entity.getFirstName() + ", " + entity.getLastName() + ", " + entity.getEmail();
+        StringBuilder sb = new StringBuilder();
+        sb.append(entity.getId()).append(", ");
+        sb.append(entity.getFirstName()).append(", ");
+        sb.append(entity.getLastName()).append(", ");
+        sb.append(entity.getEmail()).append(", ");
+
+        return sb.toString();
     }
 }

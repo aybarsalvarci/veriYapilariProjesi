@@ -26,13 +26,13 @@ public class RealEstateMapper implements BaseMapper<RealEstate> {
     @Override
     public String toString(RealEstate entity) {
         StringBuilder sb = new StringBuilder();
-        sb.append(entity.getId()).append(",");
-        sb.append(entity.getCustomerId()).append(",");
-        sb.append(entity.getTitle()).append(",");
-        sb.append(entity.getDescription()).append(",");
-        sb.append(entity.getSize()).append(",");
-        sb.append(entity.getLocation()).append(",");
-        sb.append(entity.getPrice()).append(",");
+        sb.append(entity.getId()).append(", ");
+        sb.append(entity.getCustomerId()).append(", ");
+        sb.append(entity.getTitle()).append(", ");
+        sb.append(entity.getDescription()).append(", ");
+        sb.append(entity.getSize()).append(", ");
+        sb.append(entity.getLocation()).append(", ");
+        sb.append(entity.getPrice()).append(", ");
 
         return sb.toString();
     }
