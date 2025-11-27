@@ -19,6 +19,15 @@ public class RealEstate extends BaseEntity {
         this.price = price;
     }
 
+    public RealEstate(int customerId, String title, String description, double size, String location, double price) {
+        this.customerId = customerId;
+        this.title = title;
+        this.description = description;
+        this.size = size;
+        this.location = location;
+        this.price = price;
+    }
+
     public RealEstate() {
     }
 
@@ -58,7 +67,7 @@ public class RealEstate extends BaseEntity {
         return location;
     }
 
-    public void getLocation(String location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 

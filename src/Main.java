@@ -1,7 +1,9 @@
 import DataStructure.BST.BinarySearchTree;
 import DataStructure.Mappers.UserMapper;
 import Entities.Image;
+import Entities.RealEstate;
 import Entities.User;
+import Managers.RealEstateManager;
 import Managers.UserManager;
 
 import java.util.List;
@@ -49,12 +51,12 @@ public class Main {
 ////        User user = mapper.toEntity("1, Aybars, Şalvarcı, aybarsalvarci44@gmail.com, hashedPassword");
 ////        System.out.println(user.getId() + user.getFirstName() + user.getLastName() + user.getEmail());
 //
-//        User user1 = new User(1, "Aybars Hasan", "Şalvarcı", "02230201029@ogr.inonu.edu.tr");
+//        User user1 = new User(120, "Aybars Hvdgdgdfasan", "Şalvarcı", "02230201029@ogr.inonu.edu.tr");
 //        String userStr = mapper.toString(user1);
 //        System.out.println(userStr);
 //        UserManager userManager = new UserManager();
 //        List<User> users = userManager.getAll();
-//
+//        userManager.create(user1).save();
 //        for(User user : users) {
 //            System.out.println(user.getId() +" "+ user.getEmail());
 //        }
@@ -70,6 +72,31 @@ public class Main {
 //        for(User user : users2) {
 //            System.out.println(user.getId() +" "+ user.getEmail());
 //        }
+
+//
+//        RealEstate r = new RealEstate(4, "title1", "description", 140.65, "location", 4566);
+//        RealEstate r1 = new RealEstate(4, "title2", "description", 140.65, "location", 4566);
+//        RealEstate r2 = new RealEstate(4, "title3", "description", 140.65, "location", 4566);
+//        RealEstate r3 = new RealEstate(4, "title4", "description", 140.65, "location", 4566);
+//        RealEstate r4 = new RealEstate(4, "title5", "description", 140.65, "location", 4566);
+//        RealEstate r5 = new RealEstate(4, "title6", "description", 140.65, "location", 4566);
+////
+//        RealEstateManager rManager = new RealEstateManager();
+//        rManager.create(r);
+//        rManager.create(r1);
+//        rManager.create(r2);
+//        rManager.create(r3);
+//        rManager.create(r4);
+//        rManager.create(r5);
+//        rManager.save();
+//        List<RealEstate> res = rManager.getAll();
+//
+//        for (RealEstate rs : res) {
+//            System.out.println(rs.getTitle());
+//        }
+
+//        RealEstate es = rManager.get(3);
+//        System.out.println(es.getTitle());
     }
 }
 

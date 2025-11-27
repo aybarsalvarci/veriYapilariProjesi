@@ -2,10 +2,21 @@ package Entities;
 
 public class Customer extends User {
 
-    public Customer(int id, String firstName, String lastName, String email) {
+    private boolean isApproved;
+
+    public Customer(int id, String firstName, String lastName, String email, boolean isApproved) {
         super(id, firstName, lastName, email);
+        this.isApproved = isApproved;
     }
 
     public Customer() {
+    }
+
+    public boolean getIsApproved() {
+        return isApproved;
+    }
+
+    public void setApproved(boolean approved) {
+        isApproved = approved;
     }
 }

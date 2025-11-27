@@ -39,6 +39,7 @@ public class FileManager<T extends BaseEntity> {
 
         } catch (Exception e) {
             System.out.println("Error in reading file");
+            e.printStackTrace();
         }
     }
 
