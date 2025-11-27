@@ -24,7 +24,14 @@ public class CustomerManager implements IManager<Customer> {
         fileManager.readFile();
         for(Customer customer : fileManager.entities)
         {
-            tree.add(customer);
+            User user = userManager.get(customer.getId());
+            if(user != null)
+            {
+                customer.setFirstName(user.getFirstName());
+                customer.setLastName(user.getLastName());
+                customer.setEmail(user.getEmail());
+                tree.add(customer);
+            }
         }
     }
 
@@ -42,38 +49,54 @@ public class CustomerManager implements IManager<Customer> {
 
     @Override
     public List<Customer> getAll() {
-//        ArrayList<Customer> customers = new ArrayList<>();
-        return null;
+        return tree.treeToList();
     }
 
-    // Kayıt İşleminde kolon tekrarı çözülecek.
+
     @Override
     public IManager create(Customer entity) {
-        User user = userManager.get(entity.getId());
-
-        if(user != null)
+        if(entity.getId() != null)
         {
-            user = new User(entity.getId(), entity.getFirstName(), entity.getLastName(), entity.getEmail());
-            userManager.create(user).save();
+            User user = userManager.get(entity.getId());
+            if(user == null)
+            {
+                throw  new RuntimeException("User with id " + entity.getId() + " doesn't exists");
+            }
         }
 
         tree.add(entity);
-
         return this;
     }
 
     @Override
     public IManager update(Customer entity) {
-        return null;
+        User user = userManager.get(entity.getId());
+        if(user == null)
+        {
+            throw  new RuntimeException("User with id " + entity.getId() + " doesn't exists");
+        }
+
+        user.setFirstName(entity.getFirstName());
+        user.setLastName(entity.getLastName());
+        user.setEmail(entity.getEmail());
+
+        userManager.update(user);
+
+        Customer customer = fileManager.entities.get(entity.getId());
+        customer.setApproved(entity.getIsApproved());
+
+        return this;
     }
 
     @Override
     public IManager delete(int id) {
-        return null;
+        tree.delete(id);
+        return this;
     }
 
     @Override
     public void save() {
-
+        fileManager.entities = tree.treeToList();
+        fileManager.saveFile();
     }
 }

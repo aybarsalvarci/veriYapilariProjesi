@@ -9,6 +9,11 @@ public class Customer extends User {
         this.isApproved = isApproved;
     }
 
+    public Customer(String firstName, String lastName, String email, boolean isApproved) {
+        super(firstName, lastName, email);
+        this.isApproved = isApproved;
+    }
+
     public Customer() {
     }
 

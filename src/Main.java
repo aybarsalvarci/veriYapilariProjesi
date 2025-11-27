@@ -1,8 +1,10 @@
 import DataStructure.BST.BinarySearchTree;
 import DataStructure.Mappers.UserMapper;
+import Entities.Customer;
 import Entities.Image;
 import Entities.RealEstate;
 import Entities.User;
+import Managers.CustomerManager;
 import Managers.RealEstateManager;
 import Managers.UserManager;
 
@@ -97,6 +99,11 @@ public class Main {
 
 //        RealEstate es = rManager.get(3);
 //        System.out.println(es.getTitle());
+
+//        Customer c1 = new Customer(10012,"Aybars Hasan", " Şalvarcı", "02230201029@ogr.inonu.edu.tr", false);
+//
+//        CustomerManager customerManager = new CustomerManager(new UserManager());
+//        customerManager.create(c1).save();
     }
 }
 
