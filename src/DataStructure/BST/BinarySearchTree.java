@@ -1,23 +1,37 @@
-package DataStructure;
+package DataStructure.BST;
 
 import Entities.BaseEntity;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Optional;
 import java.util.Queue;
 
 public class BinarySearchTree<T extends BaseEntity> {
 
     public Node root;
+    private int lastId;
 
     public BinarySearchTree() {
+        lastId = 0;
     }
 
     public void add(T entity) {
 
-        Node newNode = new Node(null, null, null, entity);
+        Node newNode = new Node<T>(null, null, null, entity);
+
+        if((entity.getId()) != null){
+            lastId = entity.getId();
+        }
+        else
+        {
+            lastId++;
+            entity.setId(lastId);
+        }
 
         if (root == null) {
             root = newNode;
+
         } else {
             addRecursive(root, newNode);
         }
@@ -63,23 +77,26 @@ public class BinarySearchTree<T extends BaseEntity> {
         return null;
     }
 
-    public void printTree() {
-        printTreeRecursive(root);
+    public ArrayList<T> treeToList() {
+        ArrayList<T> list = new ArrayList<>();
+        treeToListRecursive(root, list);
+
+        return list;
     }
 
-    private void printTreeRecursive(Node currentNode) {
+    private void treeToListRecursive(Node currentNode, ArrayList<T> list) {
         if (currentNode == null) {
             return;
         }
 
-        System.out.println(currentNode.value.getId());
+        list.add((T)currentNode.value);
 
         if (currentNode.left != null) {
-            printTreeRecursive(currentNode.left);
+            treeToListRecursive(currentNode.left, list);
         }
 
         if (currentNode.right != null) {
-            printTreeRecursive(currentNode.right);
+            treeToListRecursive(currentNode.right, list);
         }
 
     }
@@ -128,37 +145,36 @@ public class BinarySearchTree<T extends BaseEntity> {
     }
 
     public void delete(int id) {
+
         Node nodeToDelete = search(id);
 
-        // bulunamazsa
-        if (nodeToDelete == null)
-            return;
+        if (nodeToDelete == null) return;
 
-        // leaf node
-        if (nodeToDelete.left == null && nodeToDelete.right == null) {
-            if (nodeToDelete.value.getId() > id) {
-                nodeToDelete.parent.right = null;
-            } else {
-                nodeToDelete.parent.left = null;
+        // two child case
+        if (nodeToDelete.left != null && nodeToDelete.right != null) {
+            Node minNode = findMinNode(nodeToDelete);
+            nodeToDelete.value = minNode.value;
+            nodeToDelete = minNode;
+        }
+
+        Node child = nodeToDelete.right != null ? nodeToDelete.right : nodeToDelete.left;
+
+        if (nodeToDelete == root) {
+            root = child;
+            if (root != null) {
+                root.parent = null;
+                return;
             }
         }
 
-        // single child
-
-        if (nodeToDelete.left == null && nodeToDelete.right != null) {
-            if (nodeToDelete.value.getId() > id)
-                nodeToDelete.parent.right = nodeToDelete.right;
-            else
-                nodeToDelete.parent.left = nodeToDelete.right;
-        } else if (nodeToDelete.left != null && nodeToDelete.right == null) {
-            if (nodeToDelete.value.getId() > id)
-                nodeToDelete.parent.right = nodeToDelete.left;
-            else
-                nodeToDelete.parent.left = nodeToDelete.left;
+        if (nodeToDelete == nodeToDelete.parent.left) {
+            nodeToDelete.parent.left = child;
+        } else {
+            nodeToDelete.parent.right = child;
         }
 
-        // two child
-
+        if(child != null)
+            child.parent = nodeToDelete.parent;
 
     }
 

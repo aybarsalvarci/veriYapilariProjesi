@@ -1,4 +1,4 @@
-package DataStructure;
+package DataStructure.BST;
 
 import Entities.BaseEntity;
 
@@ -8,7 +8,7 @@ public class Node<T extends BaseEntity> {
     public Node left;
     public Node right;
 
-    T value;
+    public T value;
 
     public Node(Node parent, Node left, Node right, T value) {
         this.parent = parent;
