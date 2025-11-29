@@ -55,6 +55,7 @@ public class CustomerManager implements IManager<Customer> {
 
     @Override
     public IManager create(Customer entity) {
+
         if(entity.getId() != null)
         {
             User user = userManager.get(entity.getId());
@@ -63,6 +64,11 @@ public class CustomerManager implements IManager<Customer> {
                 throw  new RuntimeException("User with id " + entity.getId() + " doesn't exists");
             }
         }
+
+        User user = new User(entity.getFirstName(), entity.getLastName(), entity.getEmail());
+        userManager.create(user).save();
+
+        entity.setId(user.getId());
 
         tree.add(entity);
         return this;
@@ -80,7 +86,7 @@ public class CustomerManager implements IManager<Customer> {
         user.setLastName(entity.getLastName());
         user.setEmail(entity.getEmail());
 
-        userManager.update(user);
+        userManager.update(user).save();
 
         Customer customer = fileManager.entities.get(entity.getId());
         customer.setApproved(entity.getIsApproved());
@@ -91,6 +97,7 @@ public class CustomerManager implements IManager<Customer> {
     @Override
     public IManager delete(int id) {
         tree.delete(id);
+        userManager.delete(id).save();
         return this;
     }
 

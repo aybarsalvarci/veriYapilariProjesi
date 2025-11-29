@@ -14,12 +14,6 @@ public class Main {
     {
 
         System.out.println("Application started!");
-
-//        UserManager um = new UserManager();
-//        User user = um.get(4);
-//        System.out.println(user.getEmail());
-
-
         // Plot sınıfı test işlemleri
 
 //        Plot p = new Plot(2, "Plot 1", "ddesc1", 2454.34, "konum1", 24, "imarlı");
@@ -78,15 +72,65 @@ public class Main {
 //        }
 
 //        String firstName, String lastName, String email, boolean isApproved, String tc
-        IndividualCustomer customer = new IndividualCustomer("Firstname", "lastname", "email", true, "24325243546");
-        IndividualCustomer customer1 = new IndividualCustomer("Firstname1", "lastname1", "email1", false, "24325243546");
-        IndividualCustomer customer2 = new IndividualCustomer("Firstname2", "lastname2", "email2", true, "24325243546");
+//        IndividualCustomer customer = new IndividualCustomer("Firstname", "lastname", "email", true, "24325243546");
+//        IndividualCustomer customer1 = new IndividualCustomer("Firstname1", "lastname1", "email1", false, "24325243546");
+//        IndividualCustomer customer2 = new IndividualCustomer("Firstname2", "lastname2", "email2", true, "24325243546");
+//
+//        IndividualCustomerManager manager = new IndividualCustomerManager();
+//
+//        manager.create(customer);
+//        manager.create(customer1);
+//        manager.create(customer2).save();
 
-        IndividualCustomerManager manager = new IndividualCustomerManager();
+//        String firstName, String lastName, String email
+//        User u1 = new User("Firstname1", "Lastname1", "email1");
+//        User u2 = new User("Firstname2", "Lastname2", "email2");
+//        User u3 = new User("Firstname3", "Lastname3", "email3");
+//
+//        UserManager um = new UserManager();
 
-        manager.create(customer);
-        manager.create(customer1);
-        manager.create(customer2).save();
+        // oluşturma
+//        um.create(u1);
+//        um.create(u2);
+//        um.create(u3).save();
+
+        // tekil veri çekme
+//        User user = um.get(1);
+//        System.out.println(user.getEmail());
+
+        // update işlemi
+//        user.setFirstName("Updated");
+//        um.update(user).save();
+
+        // delete işlemi
+//        um.delete(1).save();
+
+//        String firstName, String lastName, String email, boolean isApproved
+//        Customer c1 = new Customer("cfirstName1", "cLastName1", "cemail1", true);
+//        Customer c2 = new Customer("cfirstName2", "cLastName2", "cemail2", false);
+//        Customer c3 = new Customer("cfirstName3", "cLastName3", "cemail3", true);
+//
+//        CustomerManager manager = new CustomerManager(new UserManager());
+
+        //create işlemi
+//        manager.create(c1);
+//        manager.create(c2);
+//        manager.create(c3).save();
+
+        // tekil veri çekme
+//        Customer customer = manager.get(1);
+//        System.out.println(customer.getFirstName());
+
+        // update işlemi
+//        customer.setFirstName("updatedfn1");
+//        customer.setLastName("updatedln1");
+//        customer.setEmail("updatedel1");
+//        customer.setApproved(false);
+//
+//        manager.update(customer).save();
+
+        // delete işlemi
+//        manager.delete(2).save();
     }
 
 }
