@@ -13,7 +13,11 @@ public class BuildingProperty extends RealEstate{
         this.contractType = contractType;
     }
 
-    public BuildingProperty() {
+    public BuildingProperty(int id, String independenceType, ContractType contractType) {
+    }
+
+    public BuildingProperty()
+    {
     }
 
     public String getIndependenceType() {

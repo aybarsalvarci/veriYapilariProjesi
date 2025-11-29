@@ -32,7 +32,7 @@ public class RealEstateMapper implements BaseMapper<RealEstate> {
         sb.append(entity.getDescription()).append(", ");
         sb.append(entity.getSize()).append(", ");
         sb.append(entity.getLocation()).append(", ");
-        sb.append(entity.getPrice()).append(", ");
+        sb.append(entity.getPrice());
 
         return sb.toString();
     }
