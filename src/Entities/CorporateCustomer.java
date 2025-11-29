@@ -8,6 +8,11 @@ public class CorporateCustomer extends Customer {
         this.taxNumber = taxNumber;
     }
 
+    public CorporateCustomer(String firstName, String lastName, String email, boolean isApproved, String taxNumber) {
+        super(firstName, lastName, email, isApproved);
+        this.taxNumber = taxNumber;
+    }
+
     public CorporateCustomer() {
     }
 

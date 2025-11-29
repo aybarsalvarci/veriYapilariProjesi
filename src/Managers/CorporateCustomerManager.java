@@ -19,10 +19,18 @@ public class CorporateCustomerManager implements IManager<CorporateCustomer> {
     public CorporateCustomerManager()
     {
         tree = new  BinarySearchTree<>();
-        customerManager = new CustomerManager(new UserManager());
-        fileManager = new FileManager<>("DatabaseFiles/corporateCustomers", new CorporateCustomerMapper());
+        customerManager = new CustomerManager();
+        fileManager = new FileManager<>("DatabaseFiles/corporateCustomers.txt", new CorporateCustomerMapper());
+        fileManager.readFile();
+
         for(CorporateCustomer c : fileManager.entities)
         {
+            Customer customer = customerManager.get(c.getId());
+            c.setFirstName(customer.getFirstName());
+            c.setLastName(customer.getLastName());
+            c.setEmail(customer.getEmail());
+            c.setApproved(customer.getIsApproved());
+
             tree.add(c);
         }
     }
@@ -52,6 +60,10 @@ public class CorporateCustomerManager implements IManager<CorporateCustomer> {
             }
         }
 
+        Customer customer = new Customer(entity.getFirstName(), entity.getLastName(), entity.getEmail(), entity.getIsApproved());
+        customerManager.create(customer).save();
+
+        entity.setId(customer.getId());
         tree.add(entity);
 
         return this;
@@ -70,9 +82,9 @@ public class CorporateCustomerManager implements IManager<CorporateCustomer> {
         customer.setEmail(entity.getEmail());
         customer.setApproved(entity.getIsApproved());
 
-        customerManager.update(customer);
+        customerManager.update(customer).save();
 
-        CorporateCustomer corporateCustomer = fileManager.entities.get(entity.getId());
+        CorporateCustomer corporateCustomer = get(entity.getId());
         corporateCustomer.setTaxNumber(entity.getTaxNumber());
 
         return this;
@@ -81,6 +93,7 @@ public class CorporateCustomerManager implements IManager<CorporateCustomer> {
     @Override
     public IManager delete(int id) {
         tree.delete(id);
+        customerManager.delete(id).save();
         return this;
     }
 

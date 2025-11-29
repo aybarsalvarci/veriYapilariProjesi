@@ -16,10 +16,10 @@ public class CustomerManager implements IManager<Customer> {
     private BinarySearchTree<Customer> tree;
     private UserManager userManager;
 
-    public CustomerManager(UserManager userManager) {
+    public CustomerManager() {
         this.fileManager = new FileManager<>("DatabaseFiles/customers.txt", new CustomerMapper());
         this.tree = new BinarySearchTree<>();
-        this.userManager = userManager;
+        this.userManager = new UserManager();
 
         fileManager.readFile();
         for(Customer customer : fileManager.entities)
@@ -88,7 +88,7 @@ public class CustomerManager implements IManager<Customer> {
 
         userManager.update(user).save();
 
-        Customer customer = fileManager.entities.get(entity.getId());
+        Customer customer = get(entity.getId());
         customer.setApproved(entity.getIsApproved());
 
         return this;

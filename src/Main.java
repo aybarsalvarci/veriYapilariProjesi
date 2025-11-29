@@ -131,6 +131,59 @@ public class Main {
 
         // delete işlemi
 //        manager.delete(2).save();
+
+//        String firstName, String lastName, String email, boolean isApproved, String tc
+//        IndividualCustomer c1 = new IndividualCustomer("indCusfn1", "indCusln1", "indCusel1", true, "34523127089");
+//        IndividualCustomer c2 = new IndividualCustomer("indCusfn2", "indCusln2", "indCusel2", false, "34523127089");
+//        IndividualCustomer c3 = new IndividualCustomer("indCusfn3", "indCusln3", "indCusel3", true, "34523127089");
+//
+//        IndividualCustomerManager customerManager = new IndividualCustomerManager();
+
+        // create işlemi
+//        customerManager.create(c1);
+//        customerManager.create(c2);
+//        customerManager.create(c3).save();
+
+        // tekil veri çekme işlemi
+
+//        IndividualCustomer c = customerManager.get(4);
+//        System.out.println(c.getFirstName());
+
+        // update işlemi
+//        c.setFirstName("TEst update");
+//        c.setApproved(false);
+//        c.setTc("test udppp");
+//
+//        customerManager.update(c).save();
+
+        // silme işlemi
+//        customerManager.delete(4).save();
+
+//        String firstName, String lastName, String email, boolean isApproved, String taxNumber
+        CorporateCustomer c1 = new CorporateCustomer("CorpoFirst1", "CorpoLast1", "corpoMail1", true, "corpoTaxNum1");
+        CorporateCustomer c2 = new CorporateCustomer("CorpoFirst2", "CorpoLast2", "corpoMail2", false, "corpoTaxNum2");
+        CorporateCustomer c3 = new CorporateCustomer("CorpoFirst3", "CorpoLast3", "corpoMail3", true, "corpoTaxNum3");
+
+
+        CorporateCustomerManager manager = new CorporateCustomerManager();
+
+        // create işlemi
+//        manager.create(c1);
+//        manager.create(c2);
+//        manager.create(c3).save();
+
+        // get single data
+//        CorporateCustomer c4 = manager.get(8);
+//        System.out.println("Corporate Customer ID: " + c4.getId() + " " + c4.getFirstName());
+
+        // update işlem
+//        c4.setFirstName("updatedFirst");
+//        c4.setApproved(true);
+//        c4.setTaxNumber("updatedTaxNum");
+//        manager.update(c4).save();
+
+        // delete işlem
+//        manager.delete(9).save();
     }
 
 }
