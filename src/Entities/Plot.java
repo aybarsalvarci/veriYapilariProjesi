@@ -9,7 +9,9 @@ public class Plot extends RealEstate{
         this.zoningStatus = zoningStatus;
     }
 
-    public Plot() {
+    public Plot(int id, String zoningStatus) {
+        this.setId(id);
+        this.zoningStatus = zoningStatus;
     }
 
     public String getZoningStatus() {

@@ -76,7 +76,6 @@ public class BuildingPropertyManager implements IManager<BuildingProperty> {
             throw new RuntimeException("Already exists");
         }
 
-//        int customerId, String title, String description, double size, String location, double price
         re = new RealEstate(entity.getCustomerId(), entity.getTitle(), entity.getDescription(), entity.getSize(), entity.getLocation(), entity.getPrice());
         realEstateManager.create(re).save();
 
