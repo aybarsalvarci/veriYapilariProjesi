@@ -3,6 +3,7 @@ import DataStructure.BST.BinarySearchTree;
 import DataStructure.Mappers.UserMapper;
 import Entities.*;
 import Enums.ContractType;
+import Enums.Role;
 import Managers.*;
 
 import java.util.ArrayList;
@@ -160,12 +161,12 @@ public class Main {
 //        customerManager.delete(4).save();
 
 //        String firstName, String lastName, String email, boolean isApproved, String taxNumber
-        CorporateCustomer c1 = new CorporateCustomer("CorpoFirst1", "CorpoLast1", "corpoMail1", true, "corpoTaxNum1");
-        CorporateCustomer c2 = new CorporateCustomer("CorpoFirst2", "CorpoLast2", "corpoMail2", false, "corpoTaxNum2");
-        CorporateCustomer c3 = new CorporateCustomer("CorpoFirst3", "CorpoLast3", "corpoMail3", true, "corpoTaxNum3");
+//        CorporateCustomer c1 = new CorporateCustomer("CorpoFirst1", "CorpoLast1", "corpoMail1", true, "corpoTaxNum1");
+//        CorporateCustomer c2 = new CorporateCustomer("CorpoFirst2", "CorpoLast2", "corpoMail2", false, "corpoTaxNum2");
+//        CorporateCustomer c3 = new CorporateCustomer("CorpoFirst3", "CorpoLast3", "corpoMail3", true, "corpoTaxNum3");
 
 
-        CorporateCustomerManager manager = new CorporateCustomerManager();
+//        CorporateCustomerManager manager = new CorporateCustomerManager();
 
         // create işlemi
 //        manager.create(c1);
@@ -184,7 +185,36 @@ public class Main {
 
         // delete işlem
 //        manager.delete(9).save();
+
+//        String firstName, String lastName, String email, String passwordHash, Role role
+        SystemUser u1 = new SystemUser("Firstname1", "Lastname1", "email1", "passwordHash1", Role.ADMIN);
+        SystemUser u2 = new SystemUser("Firstname2", "Lastname2", "email2", "passwordHash2", Role.STANDARD_USER);
+        SystemUser u3 = new SystemUser("Firstname3", "Lastname3", "email3", "passwordHash3", Role.STANDARD_USER);
+
+        SystemUserManager userManager = new SystemUserManager();
+//        create işlem
+//        userManager.create(u1);
+//        userManager.create(u2);
+//        userManager.create(u3).save();
+
+//        get single data
+
+//        SystemUser user = userManager.get(9);
+//        System.out.println(user.getFirstName() + " " + user.getRole());
+
+
+        // tüm veriler
+//        List<SystemUser> users = userManager.getAll();
+//        for(SystemUser u : users)
+//        {
+//            System.out.println(u.getFirstName() + " " + u.getRole());
+//        }
+//
+
+        // delete
+//        userManager.delete(9).save();
     }
+
 
 }
 

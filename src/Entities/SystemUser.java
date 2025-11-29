@@ -13,8 +13,16 @@ public class SystemUser extends User {
         role = role;
     }
 
-    public SystemUser() {
+    public SystemUser(String firstName, String lastName, String email, String passwordHash, Role role) {
+        super(firstName, lastName, email);
+        this.passwordHash = passwordHash;
+        this.role = role;
+    }
 
+    public SystemUser(int id, String passwordHash, Role role) {
+        this.setId(id);
+        this.passwordHash = passwordHash;
+        this.role = role;
     }
 
     public String getPasswordHash() {
