@@ -1,0 +1,2 @@
+5, son kat, FOR_RENT
+6, bodrum kat, FOR_SALE

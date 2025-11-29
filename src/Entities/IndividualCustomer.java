@@ -8,6 +8,11 @@ public class IndividualCustomer extends Customer {
         this.tc = tc;
     }
 
+    public IndividualCustomer(String firstName, String lastName, String email, boolean isApproved, String tc) {
+        super(firstName, lastName, email, isApproved);
+        this.tc = tc;
+    }
+
     public IndividualCustomer() {
     }
 

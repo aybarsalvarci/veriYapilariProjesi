@@ -4,11 +4,9 @@ import DataStructure.BST.BinarySearchTree;
 import DataStructure.BST.Node;
 import DataStructure.FileManager;
 import DataStructure.Mappers.PlotMapper;
-import Entities.BuildingProperty;
 import Entities.Plot;
 import Entities.RealEstate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class PlotManager implements IManager<Plot> {
@@ -20,7 +18,7 @@ public class PlotManager implements IManager<Plot> {
         realEstateManager = new RealEstateManager();
         tree = new BinarySearchTree<>();
         fileManager = new FileManager<>("DatabaseFiles/plots.txt", new PlotMapper());
-
+        fileManager.readFile();
         for (Plot plot : fileManager.entities) {
             tree.add(plot);
         }
@@ -65,14 +63,7 @@ public class PlotManager implements IManager<Plot> {
 
     @Override
     public IManager create(Plot entity) {
-        RealEstate re = realEstateManager.get(entity.getId());
-
-        if(re != null)
-        {
-            throw new RuntimeException("Already exists");
-        }
-
-        re = new RealEstate(entity.getCustomerId(), entity.getTitle(), entity.getDescription(), entity.getSize(), entity.getLocation(), entity.getPrice());
+        RealEstate re = new RealEstate(entity.getCustomerId(), entity.getTitle(), entity.getDescription(), entity.getSize(), entity.getLocation(), entity.getPrice());
         realEstateManager.create(re).save();
 
         entity.setId(re.getId());
@@ -122,6 +113,7 @@ public class PlotManager implements IManager<Plot> {
 
     @Override
     public void save() {
+        fileManager.entities = tree.treeToList();
         fileManager.saveFile();
     }
 }

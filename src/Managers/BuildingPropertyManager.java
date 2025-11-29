@@ -20,6 +20,7 @@ public class BuildingPropertyManager implements IManager<BuildingProperty> {
     {
         realEstateManager = new RealEstateManager();
         fileManager = new FileManager<>("DatabaseFiles/buildingProperties.txt", new BuildingPropertyMapper());
+        fileManager.readFile();
         tree = new BinarySearchTree<>();
 
         for(BuildingProperty entity : fileManager.entities)
@@ -69,14 +70,7 @@ public class BuildingPropertyManager implements IManager<BuildingProperty> {
     @Override
     public IManager create(BuildingProperty entity) {
 
-        RealEstate re = realEstateManager.get(entity.getId());
-
-        if(re != null)
-        {
-            throw new RuntimeException("Already exists");
-        }
-
-        re = new RealEstate(entity.getCustomerId(), entity.getTitle(), entity.getDescription(), entity.getSize(), entity.getLocation(), entity.getPrice());
+        RealEstate re = new RealEstate(entity.getCustomerId(), entity.getTitle(), entity.getDescription(), entity.getSize(), entity.getLocation(), entity.getPrice());
         realEstateManager.create(re).save();
 
         entity.setId(re.getId());
@@ -94,7 +88,6 @@ public class BuildingPropertyManager implements IManager<BuildingProperty> {
             throw new RuntimeException("Not found.");
         }
 
-//        int customerId, String title, String description, double size, String location, double price
         re.setCustomerId(entity.getCustomerId());
         re.setTitle(entity.getTitle());
         re.setDescription(entity.getDescription());
@@ -127,6 +120,7 @@ public class BuildingPropertyManager implements IManager<BuildingProperty> {
 
     @Override
     public void save() {
+        fileManager.entities = tree.treeToList();
         fileManager.saveFile();
     }
 }

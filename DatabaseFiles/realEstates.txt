@@ -1,12 +1,4 @@
-1,2,Ev,Ev açıklama,100.0,Mahalle,300000.0
-2,2,Ev1,Ev açıklama,100.0,Mahalle,300000.0
-3,2,Ev2,Ev açıklama,100.0,Mahalle,300000.0
-4,2,Ev3,Ev açıklama,100.0,Mahalle,300000.0
-5,2,Ev4,Ev açıklama,100.0,Mahalle,300000.0
-6,2,Ev5,Ev açıklama,100.0,Mahalle,300000.0
-7,4,title1,description,140.65,location,4566.0
-8,4,title2,description,140.65,location,4566.0
-9,4,title3,description,140.65,location,4566.0
-10,4,title4,description,140.65,location,4566.0
-11,4,title5,description,140.65,location,4566.0
-12,4,title6,description,140.65,location,4566.0
+1, 2, updated, ddesc1, 2454.34, konum1, 24.0
+3, 13, Plot 3, ddesc3, 3333.0, konum3, 34.0
+5, 5, titl2, desc2, 43.0, konum2, 43.4
+6, 3, titl3, desc3, 234.3, konum3, 43.4

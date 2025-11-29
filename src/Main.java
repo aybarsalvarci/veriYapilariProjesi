@@ -1,13 +1,11 @@
+import Controllers.RealEstateController;
 import DataStructure.BST.BinarySearchTree;
 import DataStructure.Mappers.UserMapper;
-import Entities.Customer;
-import Entities.Image;
-import Entities.RealEstate;
-import Entities.User;
-import Managers.CustomerManager;
-import Managers.RealEstateManager;
-import Managers.UserManager;
+import Entities.*;
+import Enums.ContractType;
+import Managers.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -16,95 +14,81 @@ public class Main {
     {
 
         System.out.println("Application started!");
+
+//        UserManager um = new UserManager();
+//        User user = um.get(4);
+//        System.out.println(user.getEmail());
+
+
+        // Plot sınıfı test işlemleri
+
+//        Plot p = new Plot(2, "Plot 1", "ddesc1", 2454.34, "konum1", 24, "imarlı");
+//        Plot p1 = new Plot(1, "Plot 2", "ddesc2", 11111, "konum2", 23, "iarlı");
+//        Plot p2 = new Plot(13, "Plot 3", "ddesc3", 3333, "konum3", 34, "imlı");
 //
-//        Image image1 = new Image(1, 1, "path1");
-//        Image image2 = new Image(2, 1, "path2");
-//        Image image3 = new Image(3, 1, "path3");
-//        Image image4 = new Image(4, 1, "path4");
-//        Image image5 = new Image(5, 1, "path5");
-//        Image image6 = new Image(8, 1, "path6");
-//        Image image7 = new Image(11, 1, "path6");
-//        Image image8 = new Image(15, 1, "path6");
-//        Image image9 = new Image(41, 1, "path6");
-//        Image image10 = new Image(63, 1, "path6");
-//        Image image11 = new Image(74, 1, "path6");
-//        Image image12 = new Image(44, 1, "path6");
-//        Image image13 = new Image(235, 1, "path6");
+//        PlotManager pm = new PlotManager();
+
+        // tekil olarak bulma
+//        p = pm.get(1);
+//        System.out.println(p.getDescription());
+//        p.setTitle("updated");
+//        p.setZoningStatus("villa imarlı");
 //
-//        BinarySearchTree<Image> bst = new BinarySearchTree<>();
-//        bst.add(image1);
-//        bst.add(image3);
-//        bst.add(image6);
-//        bst.add(image4);
-//        bst.add(image5);
-//        bst.add(image6);
-//        bst.add(image7);
-//        bst.add(image8);
-//        bst.add(image9);
-//        bst.add(image10);
-//        bst.add(image11);
-//        bst.add(image12);
-//        bst.add(image13);
-//
-////        bst.delete(44);
-//        bst.printByLevel();
-//
-//        UserMapper mapper = new UserMapper();
-////        User user = mapper.toEntity("1, Aybars, Şalvarcı, aybarsalvarci44@gmail.com, hashedPassword");
-////        System.out.println(user.getId() + user.getFirstName() + user.getLastName() + user.getEmail());
-//
-//        User user1 = new User(120, "Aybars Hvdgdgdfasan", "Şalvarcı", "02230201029@ogr.inonu.edu.tr");
-//        String userStr = mapper.toString(user1);
-//        System.out.println(userStr);
-//        UserManager userManager = new UserManager();
-//        List<User> users = userManager.getAll();
-//        userManager.create(user1).save();
-//        for(User user : users) {
-//            System.out.println(user.getId() +" "+ user.getEmail());
+//        // güncelleme işlemi  save -> dosyaya kaydetme fonksiyonu
+//        pm.update(p).save();
+
+        // silme işlemi
+//        pm.delete(2).save();
+
+        // Tüm veri
+//        List<Plot> plots = pm.getAll();
+//        for (Plot plot : plots) {
+//            System.out.println(plot.getTitle());
 //        }
 
-//        User user = userManager.get(3);
-//        System.out.println("User id: " + user.getId());
-//        System.out.println("User name:" + user.getFirstName());
 
-//        userManager.delete(10).save();
-//        System.out.println("------------------------------------------------------------------");
-//        List<User> users2 = userManager.getAll();
+//        BuildingProperty p1 = new BuildingProperty(1, "titl1", "desc1", 23.3, "konum1", 43.4, "giriş kat", ContractType.FOR_RENT);
+//        BuildingProperty p2 = new BuildingProperty(5, "titl2", "desc2", 43, "konum2", 43.4, "son kat", ContractType.FOR_RENT);
+//        BuildingProperty p3 = new BuildingProperty(3, "titl3", "desc3", 234.3, "konum3", 43.4, "bodrum kat", ContractType.FOR_SALE);
 //
-//        for(User user : users2) {
-//            System.out.println(user.getId() +" "+ user.getEmail());
+//        BuildingPropertyManager manager = new BuildingPropertyManager();
+
+        // oluşturma işlemleri
+//        manager.create(p1);
+//        manager.create(p2);
+//        manager.create(p3).save();
+
+        // tekil veri çekme
+//        BuildingProperty prop = manager.get(4);
+//
+//        prop.setTitle("updated property");
+//        prop.setIndependenceType("updated independence type");
+//
+//        // update işlemi save -> dosyaya kayıt etme fonksiyonu
+//        manager.update(prop).save();
+
+        // silme işlemi
+//        manager.delete(4).save();
+
+        // tüm verileri çekme
+//        List<BuildingProperty> buildingProperties = manager.getAll();
+//
+//        for (BuildingProperty buildingProperty : buildingProperties) {
+//            System.out.println(buildingProperty.getTitle());
 //        }
 
-//
-//        RealEstate r = new RealEstate(4, "title1", "description", 140.65, "location", 4566);
-//        RealEstate r1 = new RealEstate(4, "title2", "description", 140.65, "location", 4566);
-//        RealEstate r2 = new RealEstate(4, "title3", "description", 140.65, "location", 4566);
-//        RealEstate r3 = new RealEstate(4, "title4", "description", 140.65, "location", 4566);
-//        RealEstate r4 = new RealEstate(4, "title5", "description", 140.65, "location", 4566);
-//        RealEstate r5 = new RealEstate(4, "title6", "description", 140.65, "location", 4566);
-////
-//        RealEstateManager rManager = new RealEstateManager();
-//        rManager.create(r);
-//        rManager.create(r1);
-//        rManager.create(r2);
-//        rManager.create(r3);
-//        rManager.create(r4);
-//        rManager.create(r5);
-//        rManager.save();
-//        List<RealEstate> res = rManager.getAll();
-//
-//        for (RealEstate rs : res) {
-//            System.out.println(rs.getTitle());
-//        }
+//        String firstName, String lastName, String email, boolean isApproved, String tc
+        IndividualCustomer customer = new IndividualCustomer("Firstname", "lastname", "email", true, "24325243546");
+        IndividualCustomer customer1 = new IndividualCustomer("Firstname1", "lastname1", "email1", false, "24325243546");
+        IndividualCustomer customer2 = new IndividualCustomer("Firstname2", "lastname2", "email2", true, "24325243546");
 
-//        RealEstate es = rManager.get(3);
-//        System.out.println(es.getTitle());
+        IndividualCustomerManager manager = new IndividualCustomerManager();
 
-//        Customer c1 = new Customer(10012,"Aybars Hasan", " Şalvarcı", "02230201029@ogr.inonu.edu.tr", false);
-//
-//        CustomerManager customerManager = new CustomerManager(new UserManager());
-//        customerManager.create(c1).save();
+        manager.create(customer);
+        manager.create(customer1);
+        manager.create(customer2).save();
     }
+
 }
 
 
