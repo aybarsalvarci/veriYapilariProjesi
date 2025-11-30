@@ -213,6 +213,10 @@ public class Main {
 
         // delete
 //        userManager.delete(9).save();
+
+        CompanyManager manager = new CompanyManager();
+        Company c = manager.get(1);
+        System.out.println(c.title + "," + c.location + "," + c.logo);
     }
 
 

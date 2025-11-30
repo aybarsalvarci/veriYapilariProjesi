@@ -13,6 +13,12 @@ public class Company extends BaseEntity{
         this.logo = logo;
     }
 
+    public Company(String title, String location, String logo) {
+        this.title = title;
+        this.location = location;
+        this.logo = logo;
+    }
+
     public String getTitle() {
         return title;
     }

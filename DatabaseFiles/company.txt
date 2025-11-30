@@ -1,0 +1,1 @@
+1, "Emlak Takip", "Mahalle Cadde Sokak", "http://fdf.com/logo"
