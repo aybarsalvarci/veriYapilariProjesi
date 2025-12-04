@@ -1,2 +1,2 @@
-8,passwordHash1,ADMIN
+8,1234,ADMIN
 10,passwordHash3,STANDARD_USER
