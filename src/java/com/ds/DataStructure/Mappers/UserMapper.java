@@ -23,7 +23,7 @@ public class UserMapper implements BaseMapper<User>{
         sb.append(entity.getId()).append(", ");
         sb.append(entity.getFirstName()).append(", ");
         sb.append(entity.getLastName()).append(", ");
-        sb.append(entity.getEmail()).append(", ");
+        sb.append(entity.getEmail());
 
         return sb.toString();
     }

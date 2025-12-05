@@ -1,162 +1,192 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
-
-<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ds.Controllers.MainController">
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="900.0"
+            prefHeight="650.0" prefWidth="1200.0" style="-fx-background-color: #F3F4F6;"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.ds.Controllers.MainController">
 
     <top>
-        <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #FFFFFF;" BorderPane.alignment="CENTER">
+        <VBox BorderPane.alignment="CENTER">
             <children>
-                <Text fill="#1f2937" strokeType="OUTSIDE" strokeWidth="0.0" text="Emlak Yönetim Paneli">
-                    <font>
-                        <Font name="Segoe UI Bold" size="20.0" />
-                    </font>
-                </Text>
-                <Pane HBox.hgrow="ALWAYS" />
-                <VBox alignment="CENTER_RIGHT">
+
+                <HBox fx:id="msgBar" alignment="CENTER" prefHeight="40.0" visible="false" managed="false"
+                      style="-fx-background-color: #10B981;">
                     <children>
-                        <Label text="Admin Kullanıcısı" textFill="#1f2937">
+                        <Label fx:id="lblMsg" text="İşlem Başarılı!" textFill="WHITE">
                             <font>
-                                <Font name="Segoe UI Bold" size="14.0" />
-                            </font>
-                        </Label>
-                        <Label text="Yönetici" textFill="#6b7280">
-                            <font>
-                                <Font size="12.0" />
+                                <Font name="Segoe UI Bold" size="14.0"/>
                             </font>
                         </Label>
                     </children>
-                </VBox>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0"
+                      style="-fx-background-color: #FFFFFF;">
+                    <children>
+                        <Text fill="#1f2937" strokeType="OUTSIDE" strokeWidth="0.0" text="Emlak Yönetim Paneli">
+                            <font>
+                                <Font name="Segoe UI Bold" size="20.0"/>
+                            </font>
+                        </Text>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                        <VBox alignment="CENTER_RIGHT">
+                            <children>
+                                <Label text="Admin Kullanıcısı" textFill="#1f2937">
+                                    <font>
+                                        <Font name="Segoe UI Bold" size="14.0"/>
+                                    </font>
+                                </Label>
+                                <Label text="Yönetici" textFill="#6b7280">
+                                    <font>
+                                        <Font size="12.0"/>
+                                    </font>
+                                </Label>
+                            </children>
+                        </VBox>
+                    </children>
+                    <padding>
+                        <Insets left="25.0" right="25.0"/>
+                    </padding>
+                    <effect>
+                        <DropShadow color="#0000001a" height="10.0" radius="4.5" width="10.0"/>
+                    </effect>
+                </HBox>
+
             </children>
-            <padding>
-                <Insets left="25.0" right="25.0" />
-            </padding>
-            <effect>
-                <DropShadow color="#0000001a" height="10.0" radius="4.5" width="10.0" />
-            </effect>
-        </HBox>
+        </VBox>
     </top>
 
     <left>
-        <VBox prefHeight="340.0" prefWidth="240.0" spacing="8.0" style="-fx-background-color: #1F2937;" BorderPane.alignment="CENTER">
+        <VBox prefHeight="340.0" prefWidth="240.0" spacing="8.0" style="-fx-background-color: #1F2937;"
+              BorderPane.alignment="CENTER">
             <children>
                 <Label text="GENEL" textFill="#9ca3af">
                     <font>
-                        <Font name="System Bold" size="11.0" />
+                        <Font name="System Bold" size="11.0"/>
                     </font>
                     <VBox.margin>
-                        <Insets bottom="5.0" left="10.0" />
+                        <Insets bottom="5.0" left="10.0"/>
                     </VBox.margin>
                 </Label>
 
-                <Button onAction="#handleAnasayfa" alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false" prefHeight="45.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Anasayfa" textFill="WHITE">
+                <Button onAction="#handleAnasayfa" alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false"
+                        prefHeight="45.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Anasayfa"
+                        textFill="WHITE">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                     <padding>
-                        <Insets left="20.0" />
+                        <Insets left="20.0"/>
                     </padding>
                 </Button>
 
-                <Label text="KULLANICILAR" textFill="#9ca3af">
+                <Label text="MÜŞTERİLER" textFill="#9ca3af">
                     <font>
-                        <Font name="System Bold" size="11.0" />
+                        <Font name="System Bold" size="11.0"/>
                     </font>
                     <VBox.margin>
-                        <Insets bottom="5.0" left="10.0" />
+                        <Insets bottom="5.0" left="10.0"/>
                     </VBox.margin>
                 </Label>
 
-                <Button onAction="#handleBireyselKullanicilar" alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false" prefHeight="45.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Bireysel Kullanıcılar" textFill="WHITE">
+                <Button onAction="#handleBireyselKullanicilar" alignment="BASELINE_LEFT" maxWidth="Infinity"
+                        mnemonicParsing="false" prefHeight="45.0"
+                        style="-fx-background-color: transparent; -fx-cursor: hand;" text="Bireysel Müşteriler"
+                        textFill="WHITE">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                     <padding>
-                        <Insets left="20.0" />
+                        <Insets left="20.0"/>
                     </padding>
                 </Button>
 
-                <Button onAction="#handleKurumsalKullanicilar" alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false" prefHeight="45.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Kurumsal Kullanıcılar" textFill="WHITE">
+                <Button onAction="#handleKurumsalKullanicilar" alignment="BASELINE_LEFT" maxWidth="Infinity"
+                        mnemonicParsing="false" prefHeight="45.0"
+                        style="-fx-background-color: transparent; -fx-cursor: hand;" text="Kurumsal Müşteriler"
+                        textFill="WHITE">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                     <padding>
-                        <Insets left="20.0" />
+                        <Insets left="20.0"/>
                     </padding>
                 </Button>
 
                 <Label text="GAYRİMENKULLER" textFill="#9ca3af">
                     <font>
-                        <Font name="System Bold" size="11.0" />
+                        <Font name="System Bold" size="11.0"/>
                     </font>
                     <VBox.margin>
-                        <Insets bottom="5.0" left="10.0" />
+                        <Insets bottom="5.0" left="10.0"/>
                     </VBox.margin>
                 </Label>
 
-                <Button onAction="#handleKonut" alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false" prefHeight="45.0" style="-fx-background-color: #374151; -fx-cursor: hand;" text="Konut Yönetimi" textFill="WHITE">
+                <Button onAction="#handleKonut" alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false"
+                        prefHeight="45.0" style="-fx-background-color: #374151; -fx-cursor: hand;" text="Konut Yönetimi"
+                        textFill="WHITE">
                     <font>
-                        <Font name="Segoe UI Bold" size="14.0" />
+                        <Font name="Segoe UI Bold" size="14.0"/>
                     </font>
                     <padding>
-                        <Insets left="20.0" />
+                        <Insets left="20.0"/>
                     </padding>
                 </Button>
 
-                <Button onAction="#handleArsa" alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false" prefHeight="45.0" style="-fx-background-color: #374151; -fx-cursor: hand;" text="Arazi Yönetimi" textFill="WHITE">
+                <Button onAction="#handleArsa" alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false"
+                        prefHeight="45.0" style="-fx-background-color: #374151; -fx-cursor: hand;" text="Arazi Yönetimi"
+                        textFill="WHITE">
                     <font>
-                        <Font name="Segoe UI Bold" size="14.0" />
+                        <Font name="Segoe UI Bold" size="14.0"/>
                     </font>
                     <padding>
-                        <Insets left="20.0" />
+                        <Insets left="20.0"/>
                     </padding>
                 </Button>
 
                 <Separator opacity="0.1" prefWidth="200.0">
                     <VBox.margin>
-                        <Insets bottom="10.0" top="10.0" />
+                        <Insets bottom="10.0" top="10.0"/>
                     </VBox.margin>
                 </Separator>
 
                 <Label text="HESAP" textFill="#9ca3af">
                     <font>
-                        <Font name="System Bold" size="11.0" />
+                        <Font name="System Bold" size="11.0"/>
                     </font>
                     <VBox.margin>
-                        <Insets bottom="5.0" left="10.0" />
+                        <Insets bottom="5.0" left="10.0"/>
                     </VBox.margin>
                 </Label>
 
-                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false" prefHeight="45.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Profilim" textFill="WHITE">
+                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false" prefHeight="45.0"
+                        style="-fx-background-color: transparent; -fx-cursor: hand;" text="Profilim" textFill="WHITE">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                     <padding>
-                        <Insets left="20.0" />
+                        <Insets left="20.0"/>
                     </padding>
                 </Button>
 
-                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false" prefHeight="45.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Çıkış Yap" textFill="#f87171">
+                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false" prefHeight="45.0"
+                        style="-fx-background-color: transparent; -fx-cursor: hand;" text="Çıkış Yap"
+                        textFill="#f87171">
                     <font>
-                        <Font name="Segoe UI" size="14.0" />
+                        <Font name="Segoe UI" size="14.0"/>
                     </font>
                     <padding>
-                        <Insets left="20.0" />
+                        <Insets left="20.0"/>
                     </padding>
                 </Button>
             </children>
             <padding>
-                <Insets bottom="20.0" left="15.0" right="15.0" top="25.0" />
+                <Insets bottom="20.0" left="15.0" right="15.0" top="25.0"/>
             </padding>
         </VBox>
     </left>
@@ -165,22 +195,24 @@
     </center>
 
     <bottom>
-        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="200.0" style="-fx-background-color: #E5E7EB; -fx-border-color: #d1d5db; -fx-border-width: 1 0 0 0;" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="200.0"
+              style="-fx-background-color: #E5E7EB; -fx-border-color: #d1d5db; -fx-border-width: 1 0 0 0;"
+              BorderPane.alignment="CENTER">
             <children>
                 <Label text="Sistem Durumu: Çevrimiçi" textFill="#4b5563">
                     <font>
-                        <Font size="11.0" />
+                        <Font size="11.0"/>
                     </font>
                 </Label>
-                <Pane HBox.hgrow="ALWAYS" />
+                <Pane HBox.hgrow="ALWAYS"/>
                 <Label text="v1.0.2 © 2025 EmlakSoft" textFill="#6b7280">
                     <font>
-                        <Font size="11.0" />
+                        <Font size="11.0"/>
                     </font>
                 </Label>
             </children>
             <padding>
-                <Insets left="20.0" right="20.0" />
+                <Insets left="20.0" right="20.0"/>
             </padding>
         </HBox>
     </bottom>

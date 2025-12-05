@@ -30,8 +30,10 @@ public class FileManager<T extends BaseEntity> {
 
             while (scanner.hasNextLine()) {
                 String row =  scanner.nextLine();
-                T entity = this.mapper.toEntity(row);
-                entities.add(entity);
+                if(!row.equals("")) {
+                    T entity = this.mapper.toEntity(row);
+                    entities.add(entity);
+                }
             }
 
             fileReader.close();
