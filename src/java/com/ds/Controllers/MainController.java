@@ -1,5 +1,7 @@
 package com.ds.Controllers;
 
+import com.ds.Entities.BuildingProperty;
+import com.ds.Entities.CorporateCustomer;
 import com.ds.Entities.IndividualCustomer;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
@@ -50,12 +52,33 @@ public class MainController {
     @FXML
     public void handleKurumsalKullanicilar()
     {
-        System.out.println("Kurumsal Kullanicilar");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ds/kurumsalKullanicilarAnasayfa.fxml"));
+            Parent view = loader.load();
+
+            CorporateCustomerController controller = loader.getController();
+            controller.setMainController(this);
+
+            mainPane.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @FXML
     public void handleKonut() {
-        System.out.println("Konut");
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ds/konutAnasayfa.fxml"));
+            Parent view = loader.load();
+
+            BuildingPropertyController controller = loader.getController();
+            controller.setMainController(this);
+
+            mainPane.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
@@ -91,6 +114,38 @@ public class MainController {
         }
     }
 
+    public void handleUpdateCorporateCustomer(CorporateCustomer customer)
+    {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ds/updateCorporateCustomer.fxml"));
+            Parent view = loader.load();
+
+            CorporateCustomerUpdateController controller = loader.getController();
+            controller.setMainController(this);
+            controller.initPage(customer);
+
+            mainPane.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+//    public void handleUpdateBuildingProperty(BuildingProperty property)
+//    {
+//        try {
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ds/updateBuildingProperty.fxml"));
+//            Parent view = loader.load();
+//
+//            BuildingPropertyUpdateController controller = loader.getController();
+//            controller.setMainController(this);
+//            controller.initPage(property);
+//
+//            mainPane.setCenter(view);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
     @FXML
     public void handleCreateIndividualCustomer() {
         try {
@@ -98,6 +153,36 @@ public class MainController {
             Parent view = loader.load();
 
             IndividualCustomerAddController controller = loader.getController();
+            controller.setMainController(this);
+
+            mainPane.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleCreateCorporateCustomer() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ds/createCorporateCustomer.fxml"));
+            Parent view = loader.load();
+
+            CorporateCustomerAddController controller = loader.getController();
+            controller.setMainController(this);
+
+            mainPane.setCenter(view);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    public void handleCreateBuildingProperty() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/ds/createBuildingProperty.fxml"));
+            Parent view = loader.load();
+
+            BuildingPropertyAddController controller = loader.getController();
             controller.setMainController(this);
 
             mainPane.setCenter(view);

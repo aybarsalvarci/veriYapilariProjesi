@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="Infinity" maxWidth="Infinity" spacing="20.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ds.Controllers.IndividualCustomerAddController">
+<VBox maxHeight="Infinity" maxWidth="Infinity" spacing="20.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ds.Controllers.CorporateCustomerAddController">
     <children>
-        <Label text="Yeni Bireysel Müşteri Ekle" textFill="#1f2937">
+        <Label text="Yeni Kurumsal Müşteri Ekle" textFill="#1f2937">
             <font>
                 <Font name="Segoe UI Bold" size="24.0" />
             </font>
@@ -75,12 +75,12 @@
                             </font>
                         </TextField>
 
-                        <Label text="TC Kimlik No:" textFill="#374151" GridPane.rowIndex="3">
+                        <Label text="Vergi Numarası:" textFill="#374151" GridPane.rowIndex="3">
                             <font>
                                 <Font name="Segoe UI" size="14.0" />
                             </font>
                         </Label>
-                        <TextField fx:id="txtTC" promptText="11 haneli TC kimlik no" style="-fx-background-radius: 4; -fx-border-color: #D1D5DB; -fx-border-radius: 4;" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                        <TextField fx:id="txtTaxNumber" promptText="Vergi Numarası" style="-fx-background-radius: 4; -fx-border-color: #D1D5DB; -fx-border-radius: 4;" GridPane.columnIndex="1" GridPane.rowIndex="3">
                             <font>
                                 <Font size="14.0" />
                             </font>
