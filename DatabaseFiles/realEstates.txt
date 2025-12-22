@@ -1,5 +1,3 @@
-1, 2, updated, ddesc1, 2454.34, konum1, 24.0
-3, 13, Plot 3, ddesc3, 3333.0, konum3, 34.0
-5, 5, titl2, desc2, 43.0, konum2, 43.4
-6, 3, titl3, desc3, 234.3, konum3, 43.4
-7, 14, TEst başlık, test içerik test içerik test içerik test içerik test içerik test içerik , 2234.0, test adres test adres test adrestest adres test adres test adres, 3456.0
+10| 17| Test Arazi| "test".;,| 10000| Ankara / Elmadağ / Hasanoğlan / Şehitlik Mah / s dfs d fsdsfsef| 346789065567
+11| 14| sdfsdfsdf| sdfsfsdfsdfsd fsfsdf sdf sdfsf sd f23| 323| Adana / Çukurova / Salbaş / Salbaş Esentepe Mah / dfsfsfsdf| 2344
+12| 11| sfsdfsdfsdfsdfsd| fsdfsdfsdfsdfsdfsdfsdfsdfsdfsdfsd| 232| Adıyaman / Çelikhan / Merkezköyler / Aktaş Mah (Pınarbaşı Köyü) / sdfsdf sdfsfdsf sff| 34232434242

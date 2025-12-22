@@ -1,10 +1,8 @@
 package com.ds.Controllers;
 
 import com.ds.Entities.CorporateCustomer;
-import com.ds.Entities.IndividualCustomer;
 import com.ds.Entities.User;
 import com.ds.Managers.CorporateCustomerManager;
-import com.ds.Managers.IndividualCustomerManager;
 import com.ds.Managers.UserManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -63,13 +61,13 @@ public class CorporateCustomerUpdateController {
             return;
         }
 
-        if(this.currentCustomer.getTaxNumber().length() != 11) {
-            mainController.showMessage("Vergi numarası 11 karakter uzunluğunda olmalıdır.", true);
+        if(this.currentCustomer.getTaxNumber().length() != 10) {
+            mainController.showMessage("Vergi kimlik numarası 10 karakter uzunluğunda olmalıdır.", true);
             return;
         }
 
         if(!this.currentCustomer.getTaxNumber().matches("[0-9]*")) {
-            mainController.showMessage("Vergi numarası sadece numerik karakterlerden oluşabilir.", true);
+            mainController.showMessage("Vergi kimlik numarası sadece numerik karakterlerden oluşabilir.", true);
             return;
         }
 
@@ -115,7 +113,7 @@ public class CorporateCustomerUpdateController {
     {
         if(mainController != null)
         {
-            mainController.handleBireyselKullanicilar();
+            mainController.handleKurumsalKullanicilar();
         }
     }
 }

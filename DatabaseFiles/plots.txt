@@ -1,2 +1,2 @@
-1,villa imarlı
-3,imlı
+10| imarlı
+12| tetsettsetste 

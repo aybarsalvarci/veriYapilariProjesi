@@ -1,8 +1,8 @@
-3, cfirstName3, cLastName3, cemail3
-5, updatedName, updatedSurname, updatedEmail
-8, Firstname1, Lastname1, aybarsalvarci44@gmail.com
-10, Firstname3, Lastname3, email3
-11, Aybars, Şalvarcı, adfad@dkfa.com
-12, update, update, abaf@fad.co
-13, CorpoTestName, CorpoTestSurname, corpo@crpo.com
-14, Aybars, Test, aybars@test.com
+3| cfirstName3| cLastName3| cemail3
+8| Aybars Hasan| Şalvarcı| aybarsalvarci@gmail.com
+11| Aybars| Şalvarcı| adfad@dkfa.com
+14| Aybars| Test| aybars@test.com
+17| Test| deneme| ddfsd@gmail.com
+18| Aybars| Şalvarcı| aybars@gmail.com
+20| Muhammet| Altay| muhammetaltay@gmail.com
+21| Taha| Özsemir| sdefds@gmf.com

@@ -1,18 +1,15 @@
 package com.ds.Controllers;
 
 import com.ds.Entities.CorporateCustomer;
-import com.ds.Entities.IndividualCustomer;
 import com.ds.Managers.CorporateCustomerManager;
-import com.ds.Managers.IndividualCustomerManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.util.Callback;
@@ -33,12 +30,11 @@ public class CorporateCustomerController {
     @FXML
     private TableColumn<CorporateCustomer, String> colEmail;
     @FXML
-    private TableColumn<CorporateCustomer, String> colIsApproved;
-    @FXML
     private TableColumn<CorporateCustomer, String> colTaxNumber;
     @FXML
     private TableColumn<CorporateCustomer, Void> colAction;
-
+    @FXML
+    private TextField txtSearch;
 
     private CorporateCustomerManager manager;
     private ObservableList<CorporateCustomer> observableList;
@@ -56,21 +52,46 @@ public class CorporateCustomerController {
     @FXML
     public void initialize() {
         List<CorporateCustomer> kullanicilar = manager.getAll();
-        if (kullanicilar != null) {
-            observableList = FXCollections.observableArrayList(kullanicilar);
-        } else {
-            observableList = FXCollections.observableArrayList();
-        }
+        observableList = FXCollections.observableArrayList(kullanicilar != null ? kullanicilar : FXCollections.emptyObservableList());
 
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colFirstname.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         colLastname.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         colEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        colIsApproved.setCellValueFactory(new PropertyValueFactory<>("isApproved"));
         colTaxNumber.setCellValueFactory(new PropertyValueFactory<>("taxNumber"));
 
+        colId.setStyle("-fx-alignment: CENTER;");
+        colTaxNumber.setStyle("-fx-alignment: CENTER;");
+
+        colFirstname.prefWidthProperty().bind(
+                kullaniciTablosu.widthProperty()
+                        .subtract(colId.widthProperty())
+                        .subtract(colLastname.widthProperty())
+                        .subtract(colEmail.widthProperty())
+                        .subtract(colTaxNumber.widthProperty())
+                        .subtract(colAction.widthProperty())
+                        .subtract(2)
+        );
+
+        FilteredList<CorporateCustomer> filteredData = new FilteredList<>(observableList, p -> true);
+        if (txtSearch != null) {
+            txtSearch.textProperty().addListener((obs, old, newValue) -> {
+                filteredData.setPredicate(customer -> {
+                    if (newValue == null || newValue.isEmpty()) return true;
+                    String lower = newValue.toLowerCase();
+                    return (customer.getFirstName() != null && customer.getFirstName().toLowerCase().contains(lower)) ||
+                            (customer.getTaxNumber() != null && customer.getTaxNumber().contains(lower)) ||
+                            (customer.getEmail() != null && customer.getEmail().toLowerCase().contains(lower)) ||
+                            (customer.getLastName() != null && customer.getLastName().toLowerCase().contains(lower));
+                });
+            });
+        }
+
+        SortedList<CorporateCustomer> sortedData = new SortedList<>(filteredData);
+        sortedData.comparatorProperty().bind(kullaniciTablosu.comparatorProperty());
+
         aksiyonButonlariniEkle();
-        kullaniciTablosu.setItems(observableList);
+        kullaniciTablosu.setItems(sortedData);
     }
 
     @FXML
@@ -86,30 +107,37 @@ public class CorporateCustomerController {
         Callback<TableColumn<CorporateCustomer, Void>, TableCell<CorporateCustomer, Void>> cellFactory = new Callback<>() {
             @Override
             public TableCell<CorporateCustomer, Void> call(final TableColumn<CorporateCustomer, Void> param) {
-                final TableCell<CorporateCustomer, Void> cell = new TableCell<>() {
+                return new TableCell<>() {
 
-                    private final Button btnDuzenle = new Button("Düzenle");
-                    private final Button btnSil = new Button("Sil");
+                    private final Button btnDuzenle = new Button("✏ Düzenle");
+                    private final Button btnSil = new Button("🗑 Sil");
                     private final HBox pane = new HBox(10, btnDuzenle, btnSil);
 
                     {
+                        btnDuzenle.getStyleClass().addAll("action-button", "btn-edit");
+                        btnSil.getStyleClass().addAll("action-button", "btn-delete");
+
                         btnDuzenle.setOnAction((event) -> {
-                            if (getTableView().getItems().size() > 0) {
-                                CorporateCustomer data = getTableView().getItems().get(getIndex());
-                                handleDuzenle(data);
-                            }
+                            CorporateCustomer data = getTableView().getItems().get(getIndex());
+                            handleDuzenle(data);
                         });
 
                         btnSil.setOnAction((event) -> {
-                            if (getTableView().getItems().size() > 0) {
-                                CorporateCustomer data = getTableView().getItems().get(getIndex());
-                                handleSil(data);
-                            }
+                            CorporateCustomer data = getTableView().getItems().get(getIndex());
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                            alert.setTitle("Silme Onayı");
+                            alert.setHeaderText(null);
+                            alert.setContentText(data.getFirstName() + " adlı kurumsal müşteriyi silmek istediğinize emin misiniz?");
+
+                            alert.showAndWait().ifPresent(response -> {
+                                if (response == ButtonType.OK) {
+                                    handleSil(data);
+                                }
+                            });
                         });
 
-                        btnDuzenle.getStyleClass().add("btn-edit");
-                        btnSil.getStyleClass().add("btn-delete");
                         pane.setAlignment(Pos.CENTER);
+                        pane.setPadding(new javafx.geometry.Insets(2, 0, 2, 0));
                     }
 
                     @Override
@@ -122,7 +150,6 @@ public class CorporateCustomerController {
                         }
                     }
                 };
-                return cell;
             }
         };
 

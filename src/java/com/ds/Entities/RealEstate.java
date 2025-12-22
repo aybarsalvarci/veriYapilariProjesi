@@ -1,15 +1,17 @@
 package com.ds.Entities;
 
+import java.math.BigDecimal;
+
 public class RealEstate extends BaseEntity {
     protected int customerId;
     protected String title;
     protected String description;
-    protected double size;
+    protected BigDecimal size;
     protected String location;
-    protected double price;
+    protected BigDecimal price;
 
 
-    public RealEstate(int id, int customerId, String title, String description, double size, String location, double price) {
+    public RealEstate(int id, int customerId, String title, String description, BigDecimal size, String location, BigDecimal price) {
         super(id);
         this.customerId = customerId;
         this.title = title;
@@ -19,7 +21,7 @@ public class RealEstate extends BaseEntity {
         this.price = price;
     }
 
-    public RealEstate(int customerId, String title, String description, double size, String location, double price) {
+    public RealEstate(int customerId, String title, String description, BigDecimal size, String location, BigDecimal price) {
         this.customerId = customerId;
         this.title = title;
         this.description = description;
@@ -55,11 +57,11 @@ public class RealEstate extends BaseEntity {
         this.description = description;
     }
 
-    public double getSize() {
+    public BigDecimal getSize() {
         return size;
     }
 
-    public void setSize(double size) {
+    public void setSize(BigDecimal size) {
         this.size = size;
     }
 
@@ -71,11 +73,11 @@ public class RealEstate extends BaseEntity {
         this.location = location;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 }

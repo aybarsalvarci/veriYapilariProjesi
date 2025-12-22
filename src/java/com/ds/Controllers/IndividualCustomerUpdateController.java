@@ -1,16 +1,14 @@
 package com.ds.Controllers;
 
-import com.ds.Entities.Customer;
 import com.ds.Entities.IndividualCustomer;
 import com.ds.Entities.User;
-import com.ds.Managers.CustomerManager;
+import com.ds.Helpers.ValidationHelper;
 import com.ds.Managers.IndividualCustomerManager;
 import com.ds.Managers.UserManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 import java.util.List;
-import java.util.UUID;
 
 public class IndividualCustomerUpdateController {
 
@@ -22,6 +20,7 @@ public class IndividualCustomerUpdateController {
     private IndividualCustomer currentCustomer;
     private MainController mainController;
     private IndividualCustomerManager individualCustomerManager;
+    private ValidationHelper validationHelper;
 
     public void initPage(IndividualCustomer customer)
     {
@@ -35,6 +34,7 @@ public class IndividualCustomerUpdateController {
 
     public IndividualCustomerUpdateController() {
         this.individualCustomerManager = new IndividualCustomerManager();
+        this.validationHelper = new ValidationHelper();
     }
 
     public void setMainController(MainController mainController) {
@@ -63,13 +63,8 @@ public class IndividualCustomerUpdateController {
             return;
         }
 
-        if(this.currentCustomer.getTc().length() != 11) {
-            mainController.showMessage("TC kimlik numarası 11 karakter uzunluğunda olmalıdır.", true);
-            return;
-        }
-
-        if(!this.currentCustomer.getTc().matches("[0-9]*")) {
-            mainController.showMessage("TC kimlik numarası sadece numerik karakterlerden oluşabilir.", true);
+        if(!validationHelper.isTCValid(this.currentCustomer.getTc())) {
+            mainController.showMessage("Geçerli bir tc kimlik numarası giriniz.", true);
             return;
         }
 

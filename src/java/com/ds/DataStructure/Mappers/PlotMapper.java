@@ -8,7 +8,7 @@ import java.util.List;
 public class PlotMapper implements BaseMapper<Plot> {
     @Override
     public Plot toEntity(String str) {
-        List<String> args = Arrays.stream(str.split(",")).map(String::trim).toList();
+        List<String> args = Arrays.stream(str.split("\\|")).map(String::trim).toList();
 
         return new Plot(Integer.parseInt(args.get(0)), args.get(1));
     }
@@ -16,7 +16,7 @@ public class PlotMapper implements BaseMapper<Plot> {
     @Override
     public String toString(Plot entity) {
         StringBuilder sb = new StringBuilder();
-        sb.append(entity.getId()).append(",");
+        sb.append(entity.getId()).append("| ");
         sb.append(entity.getZoningStatus());
 
         return sb.toString();

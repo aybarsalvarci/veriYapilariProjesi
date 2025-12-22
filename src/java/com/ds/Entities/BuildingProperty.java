@@ -2,18 +2,20 @@ package com.ds.Entities;
 
 import com.ds.Enums.ContractType;
 
+import java.math.BigDecimal;
+
 public class BuildingProperty extends RealEstate{
 
     protected String independenceType;
     protected ContractType contractType;
 
-    public BuildingProperty(int id, int customerId, String title, String description, double size, String location, double price, String independenceType, ContractType contractType) {
+    public BuildingProperty(int id, int customerId, String title, String description, BigDecimal size, String location, BigDecimal price, String independenceType, ContractType contractType) {
         super(id, customerId, title, description, size, location, price);
         this.independenceType = independenceType;
         this.contractType = contractType;
     }
 
-    public BuildingProperty(int customerId, String title, String description, double size, String location, double price, String independenceType, ContractType contractType) {
+    public BuildingProperty(int customerId, String title, String description, BigDecimal size, String location, BigDecimal price, String independenceType, ContractType contractType) {
         super(customerId, title, description, size, location, price);
         this.independenceType = independenceType;
         this.contractType = contractType;

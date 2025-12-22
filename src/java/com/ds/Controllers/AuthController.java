@@ -19,6 +19,7 @@ import java.io.IOException;
 public class AuthController {
 
     SystemUserManager systemUserManager;
+
     @FXML
     private TextField txtEmail;
     @FXML
@@ -35,18 +36,20 @@ public class AuthController {
         String email = txtEmail.getText();
         String password = txtPassword.getText();
 
-
         if (email.isEmpty() || password.isEmpty()) {
             setMessage("Lütfen tüm alanları doldurunuz.", true);
-        }
-        else {
+        } else {
             SystemUser usr = systemUserManager.getUserByEmail(email);
+
             if (usr != null && usr.getPasswordHash().equals(password)) {
+
+                com.ds.Helpers.UserSession.getInstance().login(usr);
+
                 setMessage("Giriş Başarılı! Hoş geldiniz.", false);
 
                 Parent root = FXMLLoader.load(getClass().getResource("/com/ds/mainLayout.fxml"));
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setTitle("Anasayfa");
+                stage.setTitle("Anasayfa - " + usr.getFirstName() + " " + usr.getLastName());
                 Scene scene = new Scene(root);
                 stage.setScene(scene);
                 stage.show();
@@ -55,6 +58,16 @@ public class AuthController {
                 setMessage("Hatalı kullanıcı adı veya şifre!", true);
             }
         }
+    }
+
+    @FXML
+    private void handleForgotPassword(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/com/ds/forgotPassword.fxml"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Şifre Sıfırlama");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     private void setMessage(String text, boolean isError) {

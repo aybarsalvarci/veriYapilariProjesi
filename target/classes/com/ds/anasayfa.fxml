@@ -2,52 +2,134 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox spacing="20.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ds.Controllers.HomeController">
+<VBox fx:id="rootVBox" style="-fx-background-color: #F3F4F6;" VBox.vgrow="ALWAYS"
+      xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.ds.Controllers.HomeController">
+
     <children>
-        <Label text="Kontrol Paneli" textFill="#1f2937">
-            <font>
-                <Font name="Segoe UI Bold" size="24.0" />
-            </font>
-        </Label>
-
-        <VBox style="-fx-background-color: #FFFFFF; -fx-background-radius: 5;" VBox.vgrow="ALWAYS">
+        <HBox alignment="CENTER_LEFT" prefHeight="70.0" spacing="15.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
             <children>
-                <Label text="Son İlanlar" textFill="#1f2937">
-                    <font>
-                        <Font name="Segoe UI Bold" size="16.0" />
-                    </font>
-                    <VBox.margin>
-                        <Insets bottom="10.0" left="15.0" top="15.0" />
-                    </VBox.margin>
-                </Label>
-
-                <TableView stylesheets="@style.css" VBox.vgrow="ALWAYS">
-                    <columns>
-                        <TableColumn prefWidth="75.0" text="İlan No" />
-                        <TableColumn prefWidth="200.0" text="Emlak Başlığı" />
-                        <TableColumn prefWidth="100.0" text="Kategori" />
-                        <TableColumn prefWidth="100.0" text="Fiyat (TL)" />
-                        <TableColumn prefWidth="100.0" text="Durum" />
-                    </columns>
-                    <columnResizePolicy>
-                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                    </columnResizePolicy>
-                </TableView>
+                <VBox alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Genel Bakış" textFill="#111827">
+                            <font><Font name="Segoe UI Bold" size="22.0" /></font>
+                        </Label>
+                        <Label text="Sistemdeki güncel gayrimenkul ve müşteri istatistikleri" textFill="#6B7280">
+                            <font><Font name="Segoe UI" size="13.0" /></font>
+                        </Label>
+                    </children>
+                </VBox>
             </children>
-            <effect>
-                <DropShadow color="#0000000d" height="10.0" radius="4.5" width="10.0" />
-            </effect>
-        </VBox>
+            <padding><Insets left="20.0" right="20.0" /></padding>
+            <VBox.margin><Insets bottom="20.0" /></VBox.margin>
+            <effect><DropShadow color="#0000000d" radius="4.5" /></effect>
+        </HBox>
 
+        <GridPane hgap="20.0" vgap="20.0" VBox.vgrow="ALWAYS">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+                <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="160.0" vgrow="ALWAYS" />
+                <RowConstraints minHeight="160.0" vgrow="ALWAYS" />
+            </rowConstraints>
+
+            <children>
+                <VBox style="-fx-background-color: #FFFFFF; -fx-background-radius: 12;" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                    <children>
+                        <Pane prefHeight="6.0" style="-fx-background-color: #3B82F6; -fx-background-radius: 12 12 0 0;" />
+                        <VBox alignment="CENTER_LEFT" spacing="8.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <Label text="Toplam Konut" textFill="#6B7280">
+                                    <font><Font name="Segoe UI Bold" size="15.0" /></font>
+                                </Label>
+                                <Label fx:id="lblKonutSayisi" text="0" textFill="#1F2937">
+                                    <font><Font name="Segoe UI Bold" size="52.0" /></font>
+                                </Label>
+                                <Label text="Aktif daire ve müstakil ilanları" textFill="#9CA3AF">
+                                    <font><Font size="13.0" /></font>
+                                </Label>
+                            </children>
+                            <padding><Insets bottom="25.0" left="30.0" right="30.0" top="25.0" /></padding>
+                        </VBox>
+                    </children>
+                    <effect><DropShadow color="#0000000d" radius="10.0" /></effect>
+                </VBox>
+
+                <VBox style="-fx-background-color: #FFFFFF; -fx-background-radius: 12;" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                    <children>
+                        <Pane prefHeight="6.0" style="-fx-background-color: #10B981; -fx-background-radius: 12 12 0 0;" />
+                        <VBox alignment="CENTER_LEFT" spacing="8.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <Label text="Toplam Arazi" textFill="#6B7280">
+                                    <font><Font name="Segoe UI Bold" size="15.0" /></font>
+                                </Label>
+                                <Label fx:id="lblAraziSayisi" text="0" textFill="#1F2937">
+                                    <font><Font name="Segoe UI Bold" size="52.0" /></font>
+                                </Label>
+                                <Label text="Aktif arsa ve tarla ilanları" textFill="#9CA3AF">
+                                    <font><Font size="13.0" /></font>
+                                </Label>
+                            </children>
+                            <padding><Insets bottom="25.0" left="30.0" right="30.0" top="25.0" /></padding>
+                        </VBox>
+                    </children>
+                    <effect><DropShadow color="#0000000d" radius="10.0" /></effect>
+                </VBox>
+
+                <VBox style="-fx-background-color: #FFFFFF; -fx-background-radius: 12;" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                    <children>
+                        <Pane prefHeight="6.0" style="-fx-background-color: #F59E0B; -fx-background-radius: 12 12 0 0;" />
+                        <VBox alignment="CENTER_LEFT" spacing="8.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <Label text="Bireysel Müşteriler" textFill="#6B7280">
+                                    <font><Font name="Segoe UI Bold" size="15.0" /></font>
+                                </Label>
+                                <Label fx:id="lblBireyselSayisi" text="0" textFill="#1F2937">
+                                    <font><Font name="Segoe UI Bold" size="52.0" /></font>
+                                </Label>
+                                <Label text="Kayıtlı gerçek kişi sayısı" textFill="#9CA3AF">
+                                    <font><Font size="13.0" /></font>
+                                </Label>
+                            </children>
+                            <padding><Insets bottom="25.0" left="30.0" right="30.0" top="25.0" /></padding>
+                        </VBox>
+                    </children>
+                    <effect><DropShadow color="#0000000d" radius="10.0" /></effect>
+                </VBox>
+
+                <VBox style="-fx-background-color: #FFFFFF; -fx-background-radius: 12;" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <children>
+                        <Pane prefHeight="6.0" style="-fx-background-color: #8B5CF6; -fx-background-radius: 12 12 0 0;" />
+                        <VBox alignment="CENTER_LEFT" spacing="8.0" VBox.vgrow="ALWAYS">
+                            <children>
+                                <Label text="Kurumsal Müşteriler" textFill="#6B7280">
+                                    <font><Font name="Segoe UI Bold" size="15.0" /></font>
+                                </Label>
+                                <Label fx:id="lblKurumsalSayisi" text="0" textFill="#1F2937">
+                                    <font><Font name="Segoe UI Bold" size="52.0" /></font>
+                                </Label>
+                                <Label text="Kayıtlı firma ve ajans sayısı" textFill="#9CA3AF">
+                                    <font><Font size="13.0" /></font>
+                                </Label>
+                            </children>
+                            <padding><Insets bottom="25.0" left="30.0" right="30.0" top="25.0" /></padding>
+                        </VBox>
+                    </children>
+                    <effect><DropShadow color="#0000000d" radius="10.0" /></effect>
+                </VBox>
+            </children>
+        </GridPane>
     </children>
-    <padding>
-        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-    </padding>
+    <padding><Insets bottom="25.0" left="25.0" right="25.0" top="25.0" /></padding>
 </VBox>

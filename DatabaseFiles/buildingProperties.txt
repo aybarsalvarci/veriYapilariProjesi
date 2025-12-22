@@ -1,3 +1,1 @@
-5, son kat, FOR_RENT
-6, bodrum kat, FOR_SALE
-7, Müstakil, FOR_RENT
+11| fsdfsdfsfsfsd| FOR_SALE

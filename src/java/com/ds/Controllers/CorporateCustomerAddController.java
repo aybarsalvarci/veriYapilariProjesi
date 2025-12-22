@@ -37,7 +37,7 @@ public class CorporateCustomerAddController {
         String tax = txtTaxNumber.getText();
 
         if (ad.isEmpty() || soyad.isEmpty()) {
-            mainController.showMessage("İsim ve soyisim alanı zorunluduur.", true);
+            mainController.showMessage("Şirket adı ve yetkili kişi alanı zorunludur.", true);
             return;
         }
 
@@ -51,13 +51,13 @@ public class CorporateCustomerAddController {
             return;
         }
 
-        if(tax.length() != 11) {
-            mainController.showMessage("TC kimlik numarası 11 karakter uzunluğunda olmalıdır.", true);
+        if(tax.length() != 10) {
+            mainController.showMessage("Vergi kimlik numarası 10 karakter uzunluğunda olmalıdır.", true);
             return;
         }
 
         if(!tax.matches("[0-9]*")) {
-            mainController.showMessage("TC kimlik numarası sadece numerik karakterlerden oluşabilir.", true);
+            mainController.showMessage("Vergi numarası numerik karakterlerden oluşmalıdır.", true);
             return;
         }
 

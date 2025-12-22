@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="rootVBox" spacing="0.0" style="-fx-background-color: #F3F4F6;" VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ds.Controllers.PlotAddController">
+    <children>
+        <HBox alignment="CENTER_LEFT" prefHeight="70.0" spacing="15.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+            <children>
+                <VBox alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Yeni Arsa Ekle" textFill="#111827">
+                            <font><Font name="Segoe UI Bold" size="20.0" /></font>
+                        </Label>
+                        <Label text="Lütfen arsa bilgilerini ve lokasyon detaylarını eksiksiz giriniz." textFill="#6B7280">
+                            <font><Font name="Segoe UI" size="12.0" /></font>
+                        </Label>
+                    </children>
+                </VBox>
+            </children>
+            <padding><Insets left="20.0" right="20.0" /></padding>
+            <VBox.margin><Insets bottom="15.0" /></VBox.margin>
+            <effect><DropShadow color="#0000000d" radius="4.5" /></effect>
+        </HBox>
+
+        <ScrollPane fitToWidth="true" style="-fx-background-color: transparent; -fx-background: transparent;" VBox.vgrow="ALWAYS">
+            <content>
+                <VBox spacing="20.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 12;">
+                    <children>
+                        <Label text="Arsa ve Lokasyon Bilgileri" textFill="#374151">
+                            <font><Font name="Segoe UI Bold" size="16.0" /></font>
+                        </Label>
+
+                        <VBox spacing="12.0">
+                            <children>
+                                <VBox spacing="5.0">
+                                    <Label text="İlan Başlığı" textFill="#4B5563"><font><Font name="Segoe UI Semibold" size="13.0" /></font></Label>
+                                    <TextField fx:id="txtTitle" prefHeight="40.0" promptText="Örn: Yatırımlık Sanayi İmarına Uygun Arsa" style="-fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-background-color: #F9FAFB;" />
+                                </VBox>
+
+                                <VBox spacing="5.0">
+                                    <Label text="Açıklama" textFill="#4B5563"><font><Font name="Segoe UI Semibold" size="13.0" /></font></Label>
+                                    <TextField fx:id="txtDescription" prefHeight="40.0" promptText="Arsa detayları..." style="-fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-background-color: #F9FAFB;" />
+                                </VBox>
+
+                                <HBox spacing="15.0">
+                                    <children>
+                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                            <Label text="Boyut (m²)" textFill="#4B5563"><font><Font name="Segoe UI Semibold" size="13.0" /></font></Label>
+                                            <TextField fx:id="txtSize" prefHeight="40.0" promptText="Örn: 500" style="-fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-background-color: #F9FAFB;" />
+                                        </VBox>
+                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                            <Label text="Ücret (₺)" textFill="#4B5563"><font><Font name="Segoe UI Semibold" size="13.0" /></font></Label>
+                                            <TextField fx:id="txtPrice" prefHeight="40.0" promptText="₺ Bedel" style="-fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-background-color: #F9FAFB;" />
+                                        </VBox>
+                                    </children>
+                                </HBox>
+
+                                <HBox spacing="15.0">
+                                    <children>
+                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                            <Label text="İmar Durumu" textFill="#4B5563"><font><Font name="Segoe UI Semibold" size="13.0" /></font></Label>
+                                            <TextField fx:id="txtZoningStatus" prefHeight="40.0" promptText="Örn: Konut / Ticari" style="-fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-background-color: #F9FAFB;" />
+                                        </VBox>
+                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                            <Label text="Müşteri Seçimi" textFill="#4B5563"><font><Font name="Segoe UI Semibold" size="13.0" /></font></Label>
+                                            <ComboBox fx:id="cmbCustomer" maxWidth="Infinity" prefHeight="40.0" promptText="Seçiniz..." style="-fx-background-color: #F9FAFB; -fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-border-radius: 8;" />
+                                        </VBox>
+                                    </children>
+                                </HBox>
+
+                                <Pane prefHeight="5.0" />
+                                <Label text="Adres Bilgileri" textFill="#374151">
+                                    <font><Font name="Segoe UI Bold" size="14.0" /></font>
+                                </Label>
+
+                                <HBox spacing="15.0">
+                                    <children>
+                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                            <Label text="İl" textFill="#4B5563"><font><Font name="Segoe UI Semibold" size="13.0" /></font></Label>
+                                            <ComboBox fx:id="cmbCity" maxWidth="Infinity" prefHeight="40.0" promptText="Seçiniz..." style="-fx-background-color: #F9FAFB; -fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-border-radius: 8;" />
+                                        </VBox>
+                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                            <Label text="İlçe" textFill="#4B5563"><font><Font name="Segoe UI Semibold" size="13.0" /></font></Label>
+                                            <ComboBox fx:id="cmbDistrict" disable="true" maxWidth="Infinity" prefHeight="40.0" promptText="Seçiniz..." style="-fx-background-color: #F9FAFB; -fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-border-radius: 8;" />
+                                        </VBox>
+                                    </children>
+                                </HBox>
+
+                                <HBox spacing="15.0">
+                                    <children>
+                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                            <Label text="Semt" textFill="#4B5563"><font><Font name="Segoe UI Semibold" size="13.0" /></font></Label>
+                                            <ComboBox fx:id="cmbNeighborhood" disable="true" maxWidth="Infinity" prefHeight="40.0" promptText="Seçiniz..." style="-fx-background-color: #F9FAFB; -fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-border-radius: 8;" />
+                                        </VBox>
+                                        <VBox spacing="5.0" HBox.hgrow="ALWAYS">
+                                            <Label text="Mahalle" textFill="#4B5563"><font><Font name="Segoe UI Semibold" size="13.0" /></font></Label>
+                                            <ComboBox fx:id="cmbQuarter" disable="true" maxWidth="Infinity" prefHeight="40.0" promptText="Seçiniz..." style="-fx-background-color: #F9FAFB; -fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-border-radius: 8;" />
+                                        </VBox>
+                                    </children>
+                                </HBox>
+
+                                <VBox spacing="5.0">
+                                    <Label text="Sokak / No" textFill="#4B5563"><font><Font name="Segoe UI Semibold" size="13.0" /></font></Label>
+                                    <TextField fx:id="txtStreet" prefHeight="40.0" promptText="Ada, parsel veya sokak bilgisi" style="-fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-background-color: #F9FAFB;" />
+                                </VBox>
+
+                                <VBox spacing="8.0">
+                                    <Label text="Arsa Resimleri" textFill="#4B5563"><font><Font name="Segoe UI Semibold" size="13.0" /></font></Label>
+                                    <HBox alignment="CENTER_LEFT" spacing="12.0">
+                                        <children>
+                                            <Button onAction="#handleSelectImages" style="-fx-background-color: #E5E7EB; -fx-cursor: hand; -fx-background-radius: 6; -fx-border-color: #D1D5DB;" text="📁 Resim Seç" />
+                                            <Label fx:id="lblSelectedImageCount" text="0 dosya seçildi" textFill="#6B7280" />
+                                        </children>
+                                    </HBox>
+                                    <ListView fx:id="lstSelectedImages" prefHeight="100.0" style="-fx-background-radius: 8; -fx-border-color: #D1D5DB;" />
+                                </VBox>
+                            </children>
+                        </VBox>
+
+                        <HBox alignment="CENTER_RIGHT" spacing="15.0">
+                            <children>
+                                <Button onAction="#handleIptal" prefHeight="40.0" prefWidth="120.0" style="-fx-background-color: #F3F4F6; -fx-cursor: hand; -fx-background-radius: 8; -fx-text-fill: #374151; -fx-border-color: #D1D5DB;" text="İptal" />
+                                <Button onAction="#handleCreate" prefHeight="40.0" prefWidth="160.0" style="-fx-background-color: #10B981; -fx-cursor: hand; -fx-background-radius: 8; -fx-text-fill: white; -fx-font-weight: bold;" text="Kaydet" />
+                            </children>
+                            <padding><Insets top="10.0" /></padding>
+                        </HBox>
+                    </children>
+                    <padding><Insets bottom="20.0" left="25.0" right="25.0" top="20.0" /></padding>
+                    <effect><DropShadow color="#0000000d" radius="10.0" /></effect>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+    <padding><Insets bottom="20.0" left="20.0" right="20.0" top="20.0" /></padding>
+</VBox>

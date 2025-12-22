@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -11,120 +13,107 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="Infinity" maxWidth="Infinity" spacing="20.0" style="-fx-background-color: #F3F4F6;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ds.Controllers.CorporateCustomerAddController">
-    <children>
-        <Label text="Yeni Kurumsal Müşteri Ekle" textFill="#1f2937">
-            <font>
-                <Font name="Segoe UI Bold" size="24.0" />
-            </font>
-        </Label>
+<VBox fx:id="rootVBox" spacing="0.0" style="-fx-background-color: #F3F4F6;"
+      VBox.vgrow="ALWAYS" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.ds.Controllers.CorporateCustomerAddController">
 
-        <VBox spacing="20.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 5;" VBox.vgrow="ALWAYS">
+    <children>
+        <HBox alignment="CENTER_LEFT" prefHeight="70.0" spacing="15.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
             <children>
-                <Label text="Müşteri Bilgileri" textFill="#6b7280">
-                    <font>
-                        <Font name="Segoe UI Bold" size="14.0" />
-                    </font>
-                    <VBox.margin>
-                        <Insets bottom="10.0" />
-                    </VBox.margin>
+                <VBox alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Yeni Kurumsal Müşteri" textFill="#111827">
+                            <font><Font name="Segoe UI Bold" size="20.0" /></font>
+                        </Label>
+                        <Label text="Şirket bilgilerini ve yasal detayları sisteme tanımlayın" textFill="#6B7280">
+                            <font><Font name="Segoe UI" size="12.0" /></font>
+                        </Label>
+                    </children>
+                </VBox>
+            </children>
+            <padding><Insets left="20.0" right="20.0" /></padding>
+            <VBox.margin><Insets bottom="20.0" /></VBox.margin>
+            <effect><DropShadow color="#0000000d" radius="4.5" /></effect>
+        </HBox>
+
+        <VBox spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" VBox.vgrow="ALWAYS">
+            <children>
+                <Label text="Şirket ve Yetkili Bilgileri" textFill="#374151">
+                    <font><Font name="Segoe UI Bold" size="15.0" /></font>
+                    <VBox.margin><Insets bottom="10.0" /></VBox.margin>
                 </Label>
 
-                <GridPane hgap="20.0" vgap="15.0">
+                <GridPane hgap="30.0" vgap="15.0">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="100.0" prefWidth="120.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="100.0" prefWidth="130.0" />
                         <ColumnConstraints hgrow="ALWAYS" minWidth="200.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="45.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="45.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label text="İsim:" textFill="#374151" GridPane.rowIndex="0">
-                            <font>
-                                <Font name="Segoe UI" size="14.0" />
-                            </font>
+                        <Label text="Şirket Adı:" textFill="#4B5563" GridPane.rowIndex="0">
+                            <font><Font name="Segoe UI" size="14.0" /></font>
                         </Label>
-                        <TextField fx:id="txtFirstname" promptText="Müşterinin adını giriniz" style="-fx-background-radius: 4; -fx-border-color: #D1D5DB; -fx-border-radius: 4;" GridPane.columnIndex="1" GridPane.rowIndex="0">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
+                        <TextField fx:id="txtFirstname" promptText="Örn: DS Yazılım Ltd. Şti."
+                                   style="-fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-border-radius: 8; -fx-background-color: #F9FAFB;"
+                                   GridPane.columnIndex="1">
+                            <padding><Insets bottom="10.0" left="12.0" right="12.0" top="10.0" /></padding>
                         </TextField>
 
-                        <Label text="Soyisim:" textFill="#374151" GridPane.rowIndex="1">
-                            <font>
-                                <Font name="Segoe UI" size="14.0" />
-                            </font>
+                        <Label text="Yetkili Kişi:" textFill="#4B5563" GridPane.rowIndex="1">
+                            <font><Font name="Segoe UI" size="14.0" /></font>
                         </Label>
-                        <TextField fx:id="txtLastname" promptText="Müşterinin soyadını giriniz" style="-fx-background-radius: 4; -fx-border-color: #D1D5DB; -fx-border-radius: 4;" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
+                        <TextField fx:id="txtLastname" promptText="Şirket yetkilisinin adı soyadı"
+                                   style="-fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-border-radius: 8; -fx-background-color: #F9FAFB;"
+                                   GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <padding><Insets bottom="10.0" left="12.0" right="12.0" top="10.0" /></padding>
                         </TextField>
 
-                        <Label text="Email Adresi:" textFill="#374151" GridPane.rowIndex="2">
-                            <font>
-                                <Font name="Segoe UI" size="14.0" />
-                            </font>
+                        <Label text="Kurumsal E-Posta:" textFill="#4B5563" GridPane.rowIndex="2">
+                            <font><Font name="Segoe UI" size="14.0" /></font>
                         </Label>
-                        <TextField fx:id="txtEmail" promptText="ornek@email.com" style="-fx-background-radius: 4; -fx-border-color: #D1D5DB; -fx-border-radius: 4;" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
+                        <TextField fx:id="txtEmail" promptText="info@sirket.com"
+                                   style="-fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-border-radius: 8; -fx-background-color: #F9FAFB;"
+                                   GridPane.columnIndex="1" GridPane.rowIndex="2">
+                            <padding><Insets bottom="10.0" left="12.0" right="12.0" top="10.0" /></padding>
                         </TextField>
 
-                        <Label text="Vergi Numarası:" textFill="#374151" GridPane.rowIndex="3">
-                            <font>
-                                <Font name="Segoe UI" size="14.0" />
-                            </font>
+                        <Label text="Vergi Numarası:" textFill="#4B5563" GridPane.rowIndex="3">
+                            <font><Font name="Segoe UI" size="14.0" /></font>
                         </Label>
-                        <TextField fx:id="txtTaxNumber" promptText="Vergi Numarası" style="-fx-background-radius: 4; -fx-border-color: #D1D5DB; -fx-border-radius: 4;" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
+                        <TextField fx:id="txtTaxNumber" promptText="10 Haneli Vergi No"
+                                   style="-fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-border-radius: 8; -fx-background-color: #F9FAFB;"
+                                   GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <padding><Insets bottom="10.0" left="12.0" right="12.0" top="10.0" /></padding>
                         </TextField>
                     </children>
                 </GridPane>
 
                 <Pane VBox.vgrow="ALWAYS" />
 
-                <HBox alignment="CENTER_RIGHT" spacing="15.0">
+                <HBox alignment="CENTER_RIGHT" spacing="12.0">
                     <children>
-                        <Button onAction="#handleIptal" mnemonicParsing="false" style="-fx-background-color: #E5E7EB; -fx-cursor: hand;" text="İptal" textFill="#374151">
-                            <font>
-                                <Font name="Segoe UI" size="14.0" />
-                            </font>
-                            <padding>
-                                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-                            </padding>
+                        <Button onAction="#handleIptal" mnemonicParsing="false"
+                                style="-fx-background-color: #F3F4F6; -fx-cursor: hand; -fx-background-radius: 8; -fx-text-fill: #374151;" text="İptal Et">
+                            <font><Font name="Segoe UI Bold" size="13.0" /></font>
+                            <padding><Insets bottom="10.0" left="25.0" right="25.0" top="10.0" /></padding>
                         </Button>
-                        <Button mnemonicParsing="false" onAction="#handleCreate" style="-fx-background-color: #10B981; -fx-cursor: hand;" text="Kaydet" textFill="WHITE">
-                            <font>
-                                <Font name="Segoe UI Bold" size="14.0" />
-                            </font>
-                            <padding>
-                                <Insets bottom="10.0" left="30.0" right="30.0" top="10.0" />
-                            </padding>
+                        <Button onAction="#handleCreate" mnemonicParsing="false"
+                                style="-fx-background-color: #10B981; -fx-cursor: hand; -fx-background-radius: 8; -fx-text-fill: white;" text="Kurumu Kaydet">
+                            <font><Font name="Segoe UI Bold" size="13.0" /></font>
+                            <padding><Insets bottom="10.0" left="35.0" right="35.0" top="10.0" /></padding>
                         </Button>
                     </children>
-                    <padding>
-                        <Insets top="20.0" />
-                    </padding>
+                    <padding><Insets top="20.0" /></padding>
                 </HBox>
-
             </children>
-            <padding>
-                <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-            </padding>
-            <effect>
-                <DropShadow color="#0000000d" height="10.0" radius="4.5" width="10.0" />
-            </effect>
+            <padding><Insets bottom="30.0" left="30.0" right="30.0" top="30.0" /></padding>
+            <effect><DropShadow color="#0000000d" radius="10.0" /></effect>
         </VBox>
-
     </children>
-    <padding>
-        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-    </padding>
+    <padding><Insets bottom="25.0" left="25.0" right="25.0" top="25.0" /></padding>
 </VBox>

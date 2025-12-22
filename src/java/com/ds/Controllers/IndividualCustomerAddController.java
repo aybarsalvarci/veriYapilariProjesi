@@ -1,16 +1,14 @@
 package com.ds.Controllers;
 
-import com.ds.Entities.Customer;
 import com.ds.Entities.IndividualCustomer;
 import com.ds.Entities.User;
-import com.ds.Managers.CustomerManager;
+import com.ds.Helpers.ValidationHelper;
 import com.ds.Managers.IndividualCustomerManager;
 import com.ds.Managers.UserManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
 import java.util.List;
-import java.util.UUID;
 
 public class IndividualCustomerAddController {
 
@@ -21,9 +19,11 @@ public class IndividualCustomerAddController {
 
     private MainController mainController;
     private IndividualCustomerManager individualCustomerManager;
+    private ValidationHelper validationHelper;
 
     public IndividualCustomerAddController() {
         this.individualCustomerManager = new IndividualCustomerManager();
+        this.validationHelper = new ValidationHelper();
     }
 
     public void setMainController(MainController mainController) {
@@ -52,15 +52,12 @@ public class IndividualCustomerAddController {
             return;
         }
 
-        if(tc.length() != 11) {
-            mainController.showMessage("TC kimlik numarası 11 karakter uzunluğunda olmalıdır.", true);
+        if(!validationHelper.isTCValid(tc)) {
+            mainController.showMessage("Geçerli bir tc kimlik numarası giriniz.", true);
             return;
         }
 
-        if(!tc.matches("[0-9]*")) {
-            mainController.showMessage("TC kimlik numarası sadece numerik karakterlerden oluşabilir.", true);
-            return;
-        }
+
 
         if(!email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"))
         {

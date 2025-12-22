@@ -24,12 +24,13 @@ public class SystemUserManager implements IManager<SystemUser>{
         for(SystemUser u : fileManager.entities)
         {
             User user = userManager.get(u.getId());
-            if(user != null)
+            if(user != null) {
                 u.setFirstName(user.getFirstName());
                 u.setLastName(user.getLastName());
                 u.setEmail(user.getEmail());
-
                 tree.add(u);
+            }
+
         }
     }
     @Override

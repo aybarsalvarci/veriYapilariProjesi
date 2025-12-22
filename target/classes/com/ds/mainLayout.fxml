@@ -5,216 +5,164 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<BorderPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="900.0"
-            prefHeight="650.0" prefWidth="1200.0" style="-fx-background-color: #F3F4F6;"
-            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.ds.Controllers.MainController">
 
-    <top>
-        <VBox BorderPane.alignment="CENTER">
-            <children>
+<StackPane fx:id="rootStackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="600.0" minWidth="1000.0"
+           prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ds.Controllers.MainController">
 
-                <HBox fx:id="msgBar" alignment="CENTER" prefHeight="40.0" visible="false" managed="false"
-                      style="-fx-background-color: #10B981;">
+    <children>
+        <BorderPane fx:id="mainPane" style="-fx-background-color: #F3F4FB;">
+            <top>
+                <HBox alignment="CENTER_LEFT" prefHeight="65.0" style="-fx-background-color: #FFFFFF;">
                     <children>
-                        <Label fx:id="lblMsg" text="İşlem Başarılı!" textFill="WHITE">
-                            <font>
-                                <Font name="Segoe UI Bold" size="14.0"/>
-                            </font>
+                        <HBox alignment="CENTER" prefWidth="240.0" spacing="10.0">
+                            <children>
+                                <Label text="🏠" style="-fx-font-size: 24px;" />
+                                <Text fill="#111827" strokeType="OUTSIDE" strokeWidth="0.0" text="EMLAK CRM">
+                                    <font><Font name="Segoe UI Bold" size="18.0"/></font>
+                                </Text>
+                            </children>
+                        </HBox>
+
+                        <Separator orientation="VERTICAL" maxHeight="30.0">
+                            <HBox.margin><Insets left="10.0" right="20.0"/></HBox.margin>
+                        </Separator>
+
+                        <Label fx:id="lblPageTitle" text="Dashboard" textFill="#4B5563">
+                            <font><Font name="Segoe UI Semibold" size="16.0"/></font>
+                        </Label>
+
+                        <Pane HBox.hgrow="ALWAYS"/>
+
+                        <HBox alignment="CENTER_RIGHT" spacing="15.0">
+                            <children>
+                                <VBox alignment="CENTER_RIGHT">
+                                    <children>
+                                        <Label fx:id="lblUserName" text="Ad Soyad" textFill="#111827">
+                                            <font><Font name="Segoe UI Bold" size="14.0"/></font>
+                                        </Label>
+                                        <Label fx:id="lblUserRole" text="Rol" textFill="#10B981">
+                                            <font><Font name="Segoe UI" size="11.0"/></font>
+                                        </Label>
+                                    </children>
+                                </VBox>
+                                <StackPane style="-fx-background-color: #F3F4F6; -fx-background-radius: 50; -fx-min-width: 40; -fx-min-height: 40;">
+                                    <children>
+                                        <Label style="-fx-font-size: 18px;" text="👤" textFill="#6B7280"/>
+                                    </children>
+                                </StackPane>
+                            </children>
+                        </HBox>
+                    </children>
+                    <padding><Insets left="0.0" right="25.0"/></padding>
+                    <effect><DropShadow color="#0000000d" radius="10.0" offsetY="2.0"/></effect>
+                </HBox>
+            </top>
+
+            <left>
+                <VBox prefWidth="240.0" spacing="5.0" style="-fx-background-color: #1F2937;" BorderPane.alignment="CENTER">
+                    <children>
+                        <Label text="MENÜ" textFill="#6B7280">
+                            <font><Font name="Segoe UI Bold" size="11.0"/></font>
+                            <VBox.margin><Insets bottom="10.0" left="15.0" top="10.0"/></VBox.margin>
+                        </Label>
+
+                        <Button fx:id="btnAnasayfa" alignment="BASELINE_LEFT" maxWidth="Infinity" onAction="#handleAnasayfa" prefHeight="45.0"
+                                style="-fx-background-color: transparent; -fx-text-fill: #D1D5DB; -fx-cursor: hand; -fx-background-radius: 8;" text="📊  Anasayfa">
+                            <font><Font name="Segoe UI Semibold" size="14.0"/></font>
+                            <padding><Insets left="20.0"/></padding>
+                        </Button>
+
+                        <Label text="YÖNETİM" textFill="#6B7280">
+                            <font><Font name="Segoe UI Bold" size="11.0"/></font>
+                            <VBox.margin><Insets bottom="10.0" left="15.0" top="20.0"/></VBox.margin>
+                        </Label>
+
+                        <Button fx:id="btnBireysel" alignment="BASELINE_LEFT" maxWidth="Infinity" onAction="#handleBireyselKullanicilar" prefHeight="45.0"
+                                style="-fx-background-color: transparent; -fx-text-fill: #D1D5DB; -fx-cursor: hand; -fx-background-radius: 8;" text="👤  Bireysel Müşteriler">
+                            <font><Font name="Segoe UI Semibold" size="14.0"/></font>
+                            <padding><Insets left="20.0"/></padding>
+                        </Button>
+
+                        <Button fx:id="btnKurumsal" alignment="BASELINE_LEFT" maxWidth="Infinity" onAction="#handleKurumsalKullanicilar" prefHeight="45.0"
+                                style="-fx-background-color: transparent; -fx-text-fill: #D1D5DB; -fx-cursor: hand; -fx-background-radius: 8;" text="🏢  Kurumsal Müşteriler">
+                            <font><Font name="Segoe UI Semibold" size="14.0"/></font>
+                            <padding><Insets left="20.0"/></padding>
+                        </Button>
+
+                        <Button fx:id="btnKonut" alignment="BASELINE_LEFT" maxWidth="Infinity" onAction="#handleKonut" prefHeight="45.0"
+                                style="-fx-background-color: transparent; -fx-text-fill: #D1D5DB; -fx-cursor: hand; -fx-background-radius: 8;" text="🏠  Konut Yönetimi">
+                            <font><Font name="Segoe UI Semibold" size="14.0"/></font>
+                            <padding><Insets left="20.0"/></padding>
+                        </Button>
+
+                        <Button fx:id="btnArsa" alignment="BASELINE_LEFT" maxWidth="Infinity" onAction="#handleArsa" prefHeight="45.0"
+                                style="-fx-background-color: transparent; -fx-text-fill: #D1D5DB; -fx-cursor: hand; -fx-background-radius: 8;" text="🗺️  Arazi Yönetimi">
+                            <font><Font name="Segoe UI Semibold" size="14.0"/></font>
+                            <padding><Insets left="20.0"/></padding>
+                        </Button>
+
+                        <Label text="SİSTEM" textFill="#6B7280">
+                            <font><Font name="Segoe UI Bold" size="11.0"/></font>
+                            <VBox.margin><Insets bottom="10.0" left="15.0" top="20.0"/></VBox.margin>
+                        </Label>
+
+                        <Button fx:id="btnSistemKullanicilari" alignment="BASELINE_LEFT" maxWidth="Infinity" onAction="#handleSistemKullanicilari" prefHeight="45.0"
+                                style="-fx-background-color: transparent; -fx-text-fill: #D1D5DB; -fx-cursor: hand; -fx-background-radius: 8;" text="🛠️  Sistem Kullanıcıları">
+                            <font><Font name="Segoe UI Semibold" size="14.0"/></font>
+                            <padding><Insets left="20.0"/></padding>
+                        </Button>
+
+                        <Pane VBox.vgrow="ALWAYS" />
+
+                        <Separator opacity="0.1" prefWidth="200.0" />
+
+                        <Button alignment="BASELINE_LEFT" maxWidth="Infinity" onAction="#handleLogout" prefHeight="45.0"
+                                style="-fx-background-color: transparent; -fx-text-fill: #F87171; -fx-cursor: hand;" text="🚪  Çıkış Yap">
+                            <font><Font name="Segoe UI Bold" size="14.0"/></font>
+                            <padding><Insets left="20.0"/></padding>
+                        </Button>
+                    </children>
+                    <padding><Insets bottom="20.0" left="10.0" right="10.0" top="10.0"/></padding>
+                </VBox>
+            </left>
+
+            <center>
+            </center>
+
+            <bottom>
+                <HBox alignment="CENTER_LEFT" prefHeight="30.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #E5E7EB; -fx-border-width: 1 0 0 0;">
+                    <children>
+                        <Pane HBox.hgrow="ALWAYS"/>
+                        <Label text="© 2025 Emlak CRM v1.0" textFill="#9CA3AF">
+                            <font><Font size="11.0"/></font>
                         </Label>
                     </children>
+                    <padding><Insets left="20.0" right="20.0"/></padding>
                 </HBox>
+            </bottom>
+        </BorderPane>
 
-                <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0"
-                      style="-fx-background-color: #FFFFFF;">
-                    <children>
-                        <Text fill="#1f2937" strokeType="OUTSIDE" strokeWidth="0.0" text="Emlak Yönetim Paneli">
-                            <font>
-                                <Font name="Segoe UI Bold" size="20.0"/>
-                            </font>
-                        </Text>
-                        <Pane HBox.hgrow="ALWAYS"/>
-                        <VBox alignment="CENTER_RIGHT">
-                            <children>
-                                <Label text="Admin Kullanıcısı" textFill="#1f2937">
-                                    <font>
-                                        <Font name="Segoe UI Bold" size="14.0"/>
-                                    </font>
-                                </Label>
-                                <Label text="Yönetici" textFill="#6b7280">
-                                    <font>
-                                        <Font size="12.0"/>
-                                    </font>
-                                </Label>
-                            </children>
-                        </VBox>
-                    </children>
-                    <padding>
-                        <Insets left="25.0" right="25.0"/>
-                    </padding>
+        <VBox alignment="TOP_RIGHT" pickOnBounds="false" prefHeight="200.0" prefWidth="100.0">
+            <padding>
+                <Insets right="20.0" top="20.0" />
+            </padding>
+            <children>
+                <HBox fx:id="msgBar" alignment="CENTER" managed="false" maxWidth="-Infinity" spacing="12.0"
+                      style="-fx-background-color: #10B981; -fx-background-radius: 8;" visible="false">
                     <effect>
-                        <DropShadow color="#0000001a" height="10.0" radius="4.5" width="10.0"/>
+                        <DropShadow color="#00000033" radius="10.0" offsetY="4.0" />
                     </effect>
+                    <children>
+                        <Label text="✔" textFill="WHITE" style="-fx-font-size: 16px;" />
+                        <Label fx:id="lblMsg" text="İşlem Başarılı!" textFill="WHITE">
+                            <font><Font name="Segoe UI Bold" size="14.0" /></font>
+                            <padding><Insets bottom="12.0" left="5.0" right="20.0" top="12.0" /></padding>
+                        </Label>
+                    </children>
+                    <padding><Insets left="15.0" /></padding>
                 </HBox>
-
             </children>
         </VBox>
-    </top>
-
-    <left>
-        <VBox prefHeight="340.0" prefWidth="240.0" spacing="8.0" style="-fx-background-color: #1F2937;"
-              BorderPane.alignment="CENTER">
-            <children>
-                <Label text="GENEL" textFill="#9ca3af">
-                    <font>
-                        <Font name="System Bold" size="11.0"/>
-                    </font>
-                    <VBox.margin>
-                        <Insets bottom="5.0" left="10.0"/>
-                    </VBox.margin>
-                </Label>
-
-                <Button onAction="#handleAnasayfa" alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false"
-                        prefHeight="45.0" style="-fx-background-color: transparent; -fx-cursor: hand;" text="Anasayfa"
-                        textFill="WHITE">
-                    <font>
-                        <Font name="Segoe UI" size="14.0"/>
-                    </font>
-                    <padding>
-                        <Insets left="20.0"/>
-                    </padding>
-                </Button>
-
-                <Label text="MÜŞTERİLER" textFill="#9ca3af">
-                    <font>
-                        <Font name="System Bold" size="11.0"/>
-                    </font>
-                    <VBox.margin>
-                        <Insets bottom="5.0" left="10.0"/>
-                    </VBox.margin>
-                </Label>
-
-                <Button onAction="#handleBireyselKullanicilar" alignment="BASELINE_LEFT" maxWidth="Infinity"
-                        mnemonicParsing="false" prefHeight="45.0"
-                        style="-fx-background-color: transparent; -fx-cursor: hand;" text="Bireysel Müşteriler"
-                        textFill="WHITE">
-                    <font>
-                        <Font name="Segoe UI" size="14.0"/>
-                    </font>
-                    <padding>
-                        <Insets left="20.0"/>
-                    </padding>
-                </Button>
-
-                <Button onAction="#handleKurumsalKullanicilar" alignment="BASELINE_LEFT" maxWidth="Infinity"
-                        mnemonicParsing="false" prefHeight="45.0"
-                        style="-fx-background-color: transparent; -fx-cursor: hand;" text="Kurumsal Müşteriler"
-                        textFill="WHITE">
-                    <font>
-                        <Font name="Segoe UI" size="14.0"/>
-                    </font>
-                    <padding>
-                        <Insets left="20.0"/>
-                    </padding>
-                </Button>
-
-                <Label text="GAYRİMENKULLER" textFill="#9ca3af">
-                    <font>
-                        <Font name="System Bold" size="11.0"/>
-                    </font>
-                    <VBox.margin>
-                        <Insets bottom="5.0" left="10.0"/>
-                    </VBox.margin>
-                </Label>
-
-                <Button onAction="#handleKonut" alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false"
-                        prefHeight="45.0" style="-fx-background-color: #374151; -fx-cursor: hand;" text="Konut Yönetimi"
-                        textFill="WHITE">
-                    <font>
-                        <Font name="Segoe UI Bold" size="14.0"/>
-                    </font>
-                    <padding>
-                        <Insets left="20.0"/>
-                    </padding>
-                </Button>
-
-                <Button onAction="#handleArsa" alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false"
-                        prefHeight="45.0" style="-fx-background-color: #374151; -fx-cursor: hand;" text="Arazi Yönetimi"
-                        textFill="WHITE">
-                    <font>
-                        <Font name="Segoe UI Bold" size="14.0"/>
-                    </font>
-                    <padding>
-                        <Insets left="20.0"/>
-                    </padding>
-                </Button>
-
-                <Separator opacity="0.1" prefWidth="200.0">
-                    <VBox.margin>
-                        <Insets bottom="10.0" top="10.0"/>
-                    </VBox.margin>
-                </Separator>
-
-                <Label text="HESAP" textFill="#9ca3af">
-                    <font>
-                        <Font name="System Bold" size="11.0"/>
-                    </font>
-                    <VBox.margin>
-                        <Insets bottom="5.0" left="10.0"/>
-                    </VBox.margin>
-                </Label>
-
-                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false" prefHeight="45.0"
-                        style="-fx-background-color: transparent; -fx-cursor: hand;" text="Profilim" textFill="WHITE">
-                    <font>
-                        <Font name="Segoe UI" size="14.0"/>
-                    </font>
-                    <padding>
-                        <Insets left="20.0"/>
-                    </padding>
-                </Button>
-
-                <Button alignment="BASELINE_LEFT" maxWidth="Infinity" mnemonicParsing="false" prefHeight="45.0"
-                        style="-fx-background-color: transparent; -fx-cursor: hand;" text="Çıkış Yap"
-                        textFill="#f87171">
-                    <font>
-                        <Font name="Segoe UI" size="14.0"/>
-                    </font>
-                    <padding>
-                        <Insets left="20.0"/>
-                    </padding>
-                </Button>
-            </children>
-            <padding>
-                <Insets bottom="20.0" left="15.0" right="15.0" top="25.0"/>
-            </padding>
-        </VBox>
-    </left>
-
-    <center>
-    </center>
-
-    <bottom>
-        <HBox alignment="CENTER_LEFT" prefHeight="35.0" prefWidth="200.0"
-              style="-fx-background-color: #E5E7EB; -fx-border-color: #d1d5db; -fx-border-width: 1 0 0 0;"
-              BorderPane.alignment="CENTER">
-            <children>
-                <Label text="Sistem Durumu: Çevrimiçi" textFill="#4b5563">
-                    <font>
-                        <Font size="11.0"/>
-                    </font>
-                </Label>
-                <Pane HBox.hgrow="ALWAYS"/>
-                <Label text="v1.0.2 © 2025 EmlakSoft" textFill="#6b7280">
-                    <font>
-                        <Font size="11.0"/>
-                    </font>
-                </Label>
-            </children>
-            <padding>
-                <Insets left="20.0" right="20.0"/>
-            </padding>
-        </HBox>
-    </bottom>
-
-</BorderPane>
+    </children>
+</StackPane>

@@ -133,3 +133,43 @@
 .menu-btn:pressed {
     -fx-background-color: #111827;
 }
+
+/* Genel Buton Yapısı */
+.action-button {
+    -fx-cursor: hand;
+    -fx-background-radius: 5;
+    -fx-font-family: "Segoe UI";
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-padding: 5 12;
+    -fx-transition: all 0.2s;
+}
+
+/* Görsel Butonu (Mavi) */
+.btn-view {
+    -fx-background-color: #3B82F6;
+}
+.btn-view:hover {
+    -fx-background-color: #2563EB;
+}
+
+/* Düzenle Butonu (Sarı/Turuncu) */
+.btn-edit {
+    -fx-background-color: #F59E0B;
+}
+.btn-edit:hover {
+    -fx-background-color: #D97706;
+}
+
+/* Sil Butonu (Kırmızı) */
+.btn-delete {
+    -fx-background-color: #EF4444;
+}
+.btn-delete:hover {
+    -fx-background-color: #DC2626;
+}
+
+/* Tablo satırı seçiliyken butonların net görünmesi için */
+.table-row-cell:selected .action-button {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 0, 1);
+}

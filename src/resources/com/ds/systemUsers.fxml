@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="rootVBox" style="-fx-background-color: #F3F4F6;"
+      VBox.vgrow="ALWAYS"
+      fx:controller="com.ds.Controllers.SystemUsersController"
+      xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1">
+
+    <children>
+        <HBox alignment="CENTER_LEFT" prefHeight="70.0" spacing="15.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;">
+            <children>
+                <VBox alignment="CENTER_LEFT">
+                    <children>
+                        <Label text="Sistem Kullanıcıları" textFill="#111827">
+                            <font><Font name="Segoe UI Bold" size="20.0" /></font>
+                        </Label>
+                        <Label text="Personel yetkilerini ve sisteme erişim izinlerini yönetin" textFill="#6B7280">
+                            <font><Font name="Segoe UI" size="12.0" /></font>
+                        </Label>
+                    </children>
+                </VBox>
+
+                <Pane HBox.hgrow="ALWAYS" />
+
+                <HBox alignment="CENTER_RIGHT" spacing="12.0">
+                    <children>
+                        <TextField fx:id="txtSearch" prefWidth="300.0" promptText="İsim, Soyisim veya E-Posta ara..."
+                                   style="-fx-background-radius: 8; -fx-border-color: #D1D5DB; -fx-background-color: #F9FAFB;">
+                            <font><Font name="Segoe UI" size="13.0" /></font>
+                            <padding><Insets bottom="8.0" left="12.0" right="12.0" top="8.0" /></padding>
+                        </TextField>
+                        <Button onAction="#handleAddNew"
+                                style="-fx-background-color: #10B981; -fx-cursor: hand; -fx-background-radius: 8; -fx-text-fill: white;" text="+ Yeni Kullanıcı Ekle">
+                            <font><Font name="Segoe UI Bold" size="13.0" /></font>
+                            <padding><Insets bottom="10.0" left="20.0" right="20.0" top="10.0" /></padding>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+            <padding><Insets left="20.0" right="20.0" /></padding>
+            <VBox.margin><Insets bottom="15.0" /></VBox.margin>
+            <effect><DropShadow color="#0000000d" radius="4.5" /></effect>
+        </HBox>
+
+        <VBox style="-fx-background-color: #FFFFFF; -fx-background-radius: 10;" VBox.vgrow="ALWAYS">
+            <children>
+                <TableView fx:id="tableUsers" stylesheets="@style.css" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colId" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" resizable="false" style="-fx-alignment: CENTER;" text="#" />
+                        <TableColumn fx:id="colFirstName" minWidth="120.0" prefWidth="140.0" text="Ad" />
+                        <TableColumn fx:id="colLastName" minWidth="120.0" prefWidth="140.0" text="Soyad" />
+
+                        <TableColumn fx:id="colEmail" minWidth="200.0" text="E-Posta" />
+
+                        <TableColumn fx:id="colRole" maxWidth="150.0" minWidth="130.0" prefWidth="140.0" style="-fx-alignment: CENTER;" text="Yetki" />
+
+                        <TableColumn fx:id="colAction" maxWidth="200.0" minWidth="200.0" prefWidth="200.0" resizable="false" style="-fx-alignment: CENTER;" text="İşlemler" />
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+            </children>
+            <padding><Insets bottom="5.0" left="5.0" right="5.0" top="5.0" /></padding>
+        </VBox>
+    </children>
+    <padding><Insets bottom="20.0" left="20.0" right="20.0" top="20.0" /></padding>
+</VBox>

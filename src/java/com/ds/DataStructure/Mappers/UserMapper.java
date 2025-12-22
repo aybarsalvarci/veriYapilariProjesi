@@ -8,9 +8,8 @@ import java.util.List;
 public class UserMapper implements BaseMapper<User>{
     @Override
     public User toEntity(String str) {
-//        id, firstName, lastName, email
 
-        List<String> userAttrs = Arrays.stream(str.split(","))
+        List<String> userAttrs = Arrays.stream(str.split("\\|"))
                 .map(String::trim)
                 .toList();
 
@@ -20,9 +19,9 @@ public class UserMapper implements BaseMapper<User>{
     @Override
     public String toString(User entity) {
         StringBuilder sb = new StringBuilder();
-        sb.append(entity.getId()).append(", ");
-        sb.append(entity.getFirstName()).append(", ");
-        sb.append(entity.getLastName()).append(", ");
+        sb.append(entity.getId()).append("| ");
+        sb.append(entity.getFirstName()).append("| ");
+        sb.append(entity.getLastName()).append("| ");
         sb.append(entity.getEmail());
 
         return sb.toString();
